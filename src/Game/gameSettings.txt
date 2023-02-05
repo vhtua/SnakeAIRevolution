@@ -1,0 +1,16 @@
+gameDifficulty
+Easy
+boardColor
+black
+snakeColor
+red
+preyType
+cherry
+bot01
+a_zhuchkov
+sky blue
+bot02
+a_zhuchkov
+white
+numberOfTournaments
+5
