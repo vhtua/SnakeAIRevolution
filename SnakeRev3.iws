@@ -5,25 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="599fc710-be0e-425b-86c3-8685302b05b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/multiscoreboard.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/total.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeRev3.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeRev3.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeRev3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeRev3.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/multiscoreboard.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/multiscoreboard.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/total.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/total.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DefaultBotFrameWork/BotLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/BotLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DefaultBotFrameWork/SnakesUIMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/SnakesUIMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/HeadToHead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/HeadToHead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/MultiplayerStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/MultiplayerStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Combobox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Combobox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StartScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/DemoResources.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/MultiStepRace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/RaceControlPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/RaceGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/SoundEffects.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/TrackView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/beetle-red.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/drift.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/track.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/vroom.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Apple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/allHighScore.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/allHighScore.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/allScoreLog.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/allScoreLog.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/ScoreMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/ScoreMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/allHighScore.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/allHighScore.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/allScoreLog.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/allScoreLog.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/gameSettings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/gameSettings.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,13 +41,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/ADMIN/Documents/GitHub/SnakeRev3/logs"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/GitHub/SnakeRev3/logs&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ADMIN\Documents\GitHub\SnakeRev3\logs" />

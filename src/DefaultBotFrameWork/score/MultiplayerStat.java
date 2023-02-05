@@ -8,6 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class creates a table of records of all the tournament among all bots
+ */
 public class MultiplayerStat {
 
     public static final String LOG_PATH = "./logs/total.txt";
@@ -19,20 +22,12 @@ public class MultiplayerStat {
 
     public static void run() throws Exception {
         readAllLinesFromFile(LOG_PATH);
-        System.out.println("Unsorted:\n");
-        for(String aRecord: aList){
-            System.out.println(aRecord +"\n");
-        }
-
         generateTableRecord(TableRecord);
-
         ArrayList<HeadToHead> everyRecord = convertListToEachRecord(aList);
         for (HeadToHead eachRecord : everyRecord) {
             addRecordtoTableRecord(eachRecord);
         }
-
         writeAllToHomeAwayRecordTable(RECORDTABLE, append);
-
     }
 
     private static void addRecordtoTableRecord(HeadToHead eachRecord) {
@@ -98,7 +93,6 @@ public class MultiplayerStat {
         results_fw = new FileWriter(path, appendable);
 
         for(String botAway : Config.botNameArr){
-//            System.out.print("," + botAway);
             inputStr += "," + botAway;
         }
         results_fw.write(inputStr+"\n");
@@ -123,13 +117,11 @@ public class MultiplayerStat {
         results_fw = new FileWriter(path, appendable);
 
         for(String botAway : Config.botNameArr){
-//            System.out.print("," + botAway);
             inputStr += "," + botAway;
         }
         results_fw.write(inputStr+"\n");
 
         for (int i = 0 ; i < Config.botNameArr.length ; i++) {
-//            String botHome = Config.botNameArr[i];
             String botHome = TableRecord[i][0];
             for (int j = 1 ; j < Config.botNameArr.length ; j++) {
                 botHome += "," + TableRecord[i][j];

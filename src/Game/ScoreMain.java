@@ -8,22 +8,16 @@ import java.util.ArrayList;
 
 public class ScoreMain {
 
-    public static final String READ_PATH = "./src/Game/allScoreLog.csv";
-    public static final String WRITE_PATH = "./src/Game/allHighscore.csv";
+    public static final String READ_PATH = "./logs/allScoreLog.csv";
+    public static final String WRITE_PATH = "./logs/allHighscore.csv";
 
     public static boolean append = false;
     public static ArrayList<String> StringList = new ArrayList<String>();
 
     public static void execution() throws Exception {
         readAllLinesFromFile(READ_PATH);
-//        System.out.println("Unsorted:\n");
-//        for(String aSnake: StringList){
-//            System.out.println(aSnake +"\n");
-//        }
-
         ArrayList<SnakeScore> SnakeList = convertListToSnake(StringList);
         writeToHighScore(SnakeList);
-
     }
 
     private static void writeToHighScore(ArrayList<SnakeScore> snakeList) throws IOException {
@@ -31,7 +25,6 @@ public class ScoreMain {
         results_fw = new FileWriter(WRITE_PATH, append);
 
         for(SnakeScore snake : snakeList){
-//            System.out.println(snake.toString());
             results_fw.write(snake.toString() + "\n");
         }
 

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyListener {
-
+    private JFrame frame = new JFrame();
 
 
     // <-- DEFAULT SETTING FOR SNAKE  ---> //
@@ -63,6 +63,14 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         r = new Random();
         appleAppear = false;
         start();
+
+        frame.add(this);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setTitle("Snake Game");
+        frame.setResizable(false);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
 
@@ -135,8 +143,6 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
             if (bestscore < score) {
                 bestscore = score;
             }
-            System.out.println("The best score: " + bestscore);
-
             stop();
             saveResult();
         } else {
@@ -158,7 +164,7 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
 
     private void saveResult() {
         try {
-            String path = "./src/Game/allScoreLog.csv";
+            String path = "./logs/allScoreLog.csv";
 
             FileWriter write = new FileWriter(path,true);
 
@@ -176,7 +182,7 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.exit(1);
+        frame.dispose();
     }
 
     public boolean snakeEatApple(SnakeAbstract snake) {
@@ -230,7 +236,13 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
 
         g.setFont(Config.SCORE_FONT);
         g.setColor(Color.WHITE);
-        g.drawString("SCORE: " + String.format ("%04d", score), Config.SQUARE_SIZE*2 , Config.SQUARE_SIZE*2 - 20);
+        g.drawString("SCORE: " + String.format("%04d", score), Config.SQUARE_SIZE*2 , Config.SQUARE_SIZE*2 - 20);
+
+        if (!Config.running) {
+            g.setFont(Config.SCORE_FONT);
+            g.setColor(Color.WHITE);
+            g.drawString("Press space to start", Config.SQUARE_SIZE*8 + 20 , Config.SQUARE_SIZE*12);
+        }
 
         newApple(g);
         checkSnake(aSnake, g);

@@ -1,5 +1,8 @@
 package DefaultBotFrameWork.score;
 
+/**
+ * This class gets the score between two bots each tournament
+ */
 class HeadToHead {
 
     private String bot1;

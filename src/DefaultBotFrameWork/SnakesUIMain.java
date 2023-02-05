@@ -44,10 +44,6 @@ public class SnakesUIMain {
 
 
     public static void run() throws InterruptedException, IOException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-//        if (args.length < 2) {
-//            System.err.println("You must provide two classes implementing the Bot interface.");
-//            System.exit(1);
-//        }
         ArrayList<Class<? extends Bot>> bots = new ArrayList<>();
         BotLoader loader = new BotLoader();
 

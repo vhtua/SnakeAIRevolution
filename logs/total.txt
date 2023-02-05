@@ -14,3 +14,6 @@ anhsBot vs. v_smirnov : 8 - 1
 anhsBot vs. tunaBot : 20 - 0
 anhsBot vs. a_zhuchkov : 4 - 1
 a_zhuchkov vs. a_zhuchkov : 1 - 0
+a_zhuchkov vs. a_zhuchkov : 1 - 0
+a_zhuchkov vs. a_zhuchkov : 0 - 1
+a_zhuchkov vs. a_zhuchkov : 1 - 0

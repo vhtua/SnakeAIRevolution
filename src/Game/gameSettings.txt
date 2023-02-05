@@ -1,11 +1,11 @@
 gameDifficulty
-Hard
+Easy
 boardColor
 black
 snakeColor
 red
 preyType
-apple
+mouse
 bot01
 a_zhuchkov
 sky blue
