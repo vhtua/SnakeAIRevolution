@@ -16,7 +16,10 @@ public class Apple {
         this.height = size;
     }
 
-
+    /**
+     * draw Apple skin in Single Player Mode
+     * @param g
+     */
     public void drawApple (Graphics g) {
         try {
             mySkin = new Config();
@@ -33,6 +36,7 @@ public class Apple {
     public int getxApple() {
         return appleCoor.x;
     }
+
     public int getyApple() {
         return appleCoor.y;
     }

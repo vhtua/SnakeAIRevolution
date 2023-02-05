@@ -33,7 +33,8 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
     private final ImageIcon BotVsBotStatisticsBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/GUI/img/botStatistics3.png")));
     private ImageIcon logo;
     private JLabel labelContainer;
-    JButton playButton = new JButton();
+    JButton playSingleButton = new JButton();
+    JButton playBotButton = new JButton();
     JButton settingsButton = new JButton();
     JButton statisticsButton = new JButton();
     JButton quitgameButton = new JButton();
@@ -151,16 +152,25 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         bot2ColorCombobox.addItem("orange");
         bot2ColorCombobox.addItem("yellow");
 
-        playButton.setBounds(tileSize*5,tileSize*3 + 50, tileSize*7,tileSize);
-        playButton.setText("▷       SINGLE PLAYER");
-        playButton.setFont(new Font("Comic Sans",Font.BOLD,25));
-        playButton.setFocusable(false);
-        playButton.setHorizontalAlignment(SwingConstants.LEFT);
-        playButton.setForeground(Color.white);
-        playButton.setBackground(new Color(0,204,102));
-        playButton.addActionListener(this);
+        playSingleButton.setBounds(tileSize*5,tileSize*3 + 50, tileSize*7,tileSize);
+        playSingleButton.setText("▷       SINGLE PLAYER");
+        playSingleButton.setFont(new Font("Comic Sans",Font.BOLD,25));
+        playSingleButton.setFocusable(false);
+        playSingleButton.setHorizontalAlignment(SwingConstants.LEFT);
+        playSingleButton.setForeground(Color.white);
+        playSingleButton.setBackground(new Color(0,204,102));
+        playSingleButton.addActionListener(this);
 
-        settingsButton.setBounds(tileSize*5,tileSize*3 + 140, tileSize*7,tileSize);
+        playBotButton.setBounds(tileSize*5,tileSize*3 + 140, tileSize*7,tileSize);
+        playBotButton.setText("▷       BOT VS BOT");
+        playBotButton.setFont(new Font("Comic Sans",Font.BOLD,25));
+        playBotButton.setFocusable(false);
+        playBotButton.setHorizontalAlignment(SwingConstants.LEFT);
+        playBotButton.setForeground(Color.white);
+        playBotButton.setBackground(new Color(0,204,102));
+        playBotButton.addActionListener(this);
+
+        settingsButton.setBounds(tileSize*5,tileSize*3 + 230, tileSize*7,tileSize);
         settingsButton.setText("⬡       SETTINGS");
         settingsButton.setFont(new Font("Comic Sans",Font.BOLD,25));
         settingsButton.setFocusable(false);
@@ -169,7 +179,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         settingsButton.setBackground(new Color(0,204,102));
         settingsButton.addActionListener(this);
 
-        statisticsButton.setBounds(tileSize*5,tileSize*3 + 230, tileSize*7,tileSize);
+        statisticsButton.setBounds(tileSize*5,tileSize*3 + 320, tileSize*7,tileSize);
         statisticsButton.setText("≡        STATISTICS");
         statisticsButton.setFont(new Font("Comic Sans",Font.BOLD,25));
         statisticsButton.setFocusable(false);
@@ -178,7 +188,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         statisticsButton.setBackground(new Color(0,204,102));
         statisticsButton.addActionListener(this);
 
-        quitgameButton.setBounds(tileSize*5,tileSize*3 + 320, tileSize*7,tileSize);
+        quitgameButton.setBounds(tileSize*5,tileSize*3 + 410, tileSize*7,tileSize);
         quitgameButton.setText("⤬       QUIT GAME");
         quitgameButton.setFont(new Font("Comic Sans",Font.BOLD,25));
         quitgameButton.setFocusable(false);
@@ -217,7 +227,8 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         this.setVisible(true);
         this.getContentPane().setBackground(new Color(102,204,0));
 
-        this.add(playButton);
+        this.add(playSingleButton);
+        this.add(playBotButton);
         this.add(settingsButton);
         this.add(statisticsButton);
         this.add(quitgameButton);
@@ -227,31 +238,9 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         centreWindow(this);
     }
 
-    public void paintStartScreen2() {
-        this.setIconImage(logo.getImage());
-        labelContainer = new JLabel(StartScreenBackground);
-        labelContainer.setSize(new Dimension(screenWidth, screenHeight));
-
-        this.setTitle("SnakeAI Revolution");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(null);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setSize(screenWidth,screenHeight);
-        this.setVisible(true);
-        this.getContentPane().setBackground(new Color(102,204,0));
-        this.add(playButton);
-        this.add(settingsButton);
-        this.add(statisticsButton);
-        this.add(quitgameButton);
-        this.add(infoButton);
-
-        this.add(labelContainer);
-        //centreWindow(this);
-
-    }
-
-
+    /**
+     *
+     */
     public void paintSettingsFrame() {
         this.setTitle("SnakeAI Revolution/Settings");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -431,7 +420,16 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == playButton) {
+        if(e.getSource() == playSingleButton) {
+            this.setVisible(false);
+            this.dispose();
+
+            try {
+                new GameFrame();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        } else if (e.getSource() == playBotButton) {
             this.setVisible(false);
             this.dispose();
 
@@ -439,7 +437,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                 @Override
                 public void run(){
                     try {
-                        SnakesUIMain.main(null);
+                        SnakesUIMain.run();
                     }
                     catch (Exception e){
                         e.printStackTrace();
@@ -495,16 +493,12 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
             }
 
         } else if (e.getSource() == quitgameButton) {
-//            int respone = JOptionPane.showConfirmDialog(null, "You are about to exit the Game. Are you sure?", "Exit Confirmation", JOptionPane.YES_NO_OPTION);
-//            if (respone == JOptionPane.YES_OPTION) {
-//                this.setVisible(false);
-//                this.dispose();
-//            }
-            try {
-                new GameFrame();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+            int respone = JOptionPane.showConfirmDialog(null, "You are about to exit the Game. Are you sure?", "Exit Confirmation", JOptionPane.YES_NO_OPTION);
+            if (respone == JOptionPane.YES_OPTION) {
+                this.setVisible(false);
+                this.dispose();
             }
+
         } else if (e.getSource() == infoButton) {
             JOptionPane.showMessageDialog(null, new MessageWithLink("Snake Revolution" +
                     "<br>version 1.0.0<br><br>" +
@@ -521,7 +515,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
             this.getContentPane().removeAll();
             this.validate();
             this.repaint();
-            this.paintStartScreen2();
+            this.paintStartScreen();
 
         } else if (e.getSource() == changeStatisticsBoardButton) {
             if (nextStatistics.equals(statisticsBoard[0])) {
