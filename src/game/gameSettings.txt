@@ -7,10 +7,10 @@ red
 preyType
 apple
 bot01
-anhsBot
-violet
+a_zhuchkov
+sky blue
 bot02
 a_zhuchkov
-orange
+white
 numberOfTournaments
-1
+5

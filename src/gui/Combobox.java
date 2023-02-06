@@ -16,6 +16,10 @@ import gui.timingframework.org.jdesktop.animation.timing.TimingTarget;
 import gui.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter;
 import gui.JFramework.ScrollBarCustom;
 
+/**
+ * This class implements a better Combobox for the Game GUI
+ * @param <E>
+ */
 public class Combobox<E> extends JComboBox<E> implements ActionListener {
 
     public String getLabeText() {

@@ -239,7 +239,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
     }
 
     /**
-     *
+     * draw the Settings GUI frame of the game
      */
     public void paintSettingsFrame() {
         this.setTitle("SnakeAI Revolution/Settings");
@@ -263,7 +263,6 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         this.add(playerBoardColor);
         playerBoardColor.setBounds(586 + insets.left, 142 + insets.top, size.width, size.height);
 
-
         // botVsbot Settings
         bot1NameCombobox.setPreferredSize(new Dimension(200, 40));
         this.add(bot1NameCombobox);
@@ -281,17 +280,9 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         this.add(bot2ColorCombobox);
         bot2ColorCombobox.setBounds(541 + insets.left, 512 + insets.top, size.width, size.height);
 
-
-
         botNumberofTournaments.setPreferredSize(new Dimension(150, 40));
         this.add(botNumberofTournaments);
         botNumberofTournaments.setBounds(593 + insets.left, 577 + insets.top, 150, 40);
-
-
-        applySettingChanges.addActionListener(e -> {
-
-        });
-
 
         labelContainer = new JLabel(SettingBackground);
         labelContainer.setSize(new Dimension(screenWidth, screenHeight));
@@ -300,27 +291,6 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         this.add(backButton);
         this.add(labelContainer);
         this.setVisible(true);
-
-        //centreWindow(this);
-    }
-
-
-    public int countLineNumberCSV(String filename) throws IOException {
-        try (InputStream is = new BufferedInputStream(new FileInputStream(filename))) {
-            byte[] c = new byte[1024];
-            int count = 0;
-            int readChars = 0;
-            boolean empty = true;
-            while ((readChars = is.read(c)) != -1) {
-                empty = false;
-                for (int i = 0; i < readChars; ++i) {
-                    if (c[i] == '\n') {
-                        ++count;
-                    }
-                }
-            }
-            return (count == 0 && !empty) ? 1 : count;
-        }
     }
 
     /**
@@ -420,12 +390,9 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == playSingleButton) {
+            try {GameMap map = new GameMap();}
+            catch (IOException ex) {throw new RuntimeException(ex);}
 
-            try {
-               GameMap map = new GameMap();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
         } else if (e.getSource() == playBotButton) {
             this.setVisible(false);
             this.dispose();
@@ -440,6 +407,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                     }
                 }
             }).start();
+
         } else if (e.getSource() == settingsButton) {
             this.getContentPane().removeAll();
             this.validate();
@@ -484,9 +452,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-            } else {
-                this.paintBotVsBotStatisticsFrame();
-            }
+            } else this.paintBotVsBotStatisticsFrame();
 
         } else if (e.getSource() == quitgameButton) {
             int respone = JOptionPane.showConfirmDialog(null, "You are about to exit the Game. Are you sure?", "Exit Confirmation", JOptionPane.YES_NO_OPTION);
@@ -506,8 +472,8 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                     "▶ Project Link on Github:<br>" +
                     "<a href=\"https://github.com/minhnguyen1312/ProjectSnakeAI\">https://github.com/minhnguyen1312/ProjectSnakeAI</a>"), "About us", JOptionPane.INFORMATION_MESSAGE);
             //JOptionPane.showMessageDialog(null, "Snake Revolution\nversion 1.0.0\n\nAuthors:\nNguyen Phuoc Bao Minh\nNguyen Vu Doanh Khoa\nVu Hoang Tuan Anh\nBa Nguyen Quoc Anh", "About us", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if (e.getSource() == backButton) {
+
+        } else if (e.getSource() == backButton) {
             this.getContentPane().removeAll();
             this.validate();
             this.repaint();
@@ -516,18 +482,13 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         } else if (e.getSource() == changeStatisticsBoardButton) {
             if (nextStatistics.equals(statisticsBoard[0])) {
                 // switch to BotvsBot Mode
-                try {
-
-
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
                 this.getContentPane().removeAll();
                 this.validate();
                 this.repaint();
                 this.paintBotVsBotStatisticsFrame();
                 nextStatistics = statisticsBoard[1];
                 changeStatisticsBoardButton.setText(nextStatistics);
+
             } else {
                 this.getContentPane().removeAll();
                 this.validate();
@@ -541,6 +502,5 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                 changeStatisticsBoardButton.setText(nextStatistics);
             }
         }
-
     }
 }
