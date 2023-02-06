@@ -1,0 +1,420 @@
+@startuml
+class game.Apple {
+- Coordinate appleCoor
+- int width
+- Config mySkin
++ void drawApple(Graphics)
++ int getxApple()
++ int getyApple()
++ String getSkin()
+}
+interface bot.Bot {
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+}
+class score.MultiplayerCompare {
++ {static} String LOG_PATH
++ {static} String RECORDTABLE
++ {static} boolean append
++ {static} ArrayList<String> aList
++ {static} String[][] TableRecord
++ {static} void execution()
+- {static} void addRecordtoTableRecord(MultiplayerScore)
+- {static} void generateTableRecord(String[][])
+- {static} ArrayList<MultiplayerScore> convertListToEachRecord(ArrayList<String>)
+- {static} ArrayList<String> readAllLinesFromFile(String)
+- {static} void writeAllToHomeAwayRecordTable(String,boolean)
+- {static} int posBotinTable(String)
+}
+class defaultbotframework.Snake {
++ HashSet<Coordinate> elements
++ Deque<Coordinate> body
++ Coordinate mazeSize
++ Coordinate getHead()
++ boolean moveTo(Direction,boolean)
++ boolean headCollidesWith(Snake)
++ Snake clone()
+}
+class defaultbotframework.SnakesUIMain {
+- {static} String LOG_DIRECTORY_PATH
+- {static} Config gameConfig
+- {static} FileWriter results_fw
+- {static} int[][] total_results_table
++ {static} String bot01
++ {static} String bot02
++ {static} boolean runningThread
++ {static} void run()
++ {static} void start_tournament_n_times(int,ArrayList<Class<? extends Bot>>)
++ {static} void start_round_robin_tournament(ArrayList<Class<? extends Bot>>)
+}
+class bot.tunaBot {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+}
+class defaultbotframework.SnakesWindow {
+- JFrame frame
+- SnakeCanvas canvas
+- SnakeGame game
+- {static} int TIME_LIMIT_PER_GAME
+- {static} int TIME_LIMIT_PER_STEP
+- boolean running
++ {static} void centreWindow(Window)
++ void run()
++ void closeWindow()
+}
+class bot.a_zhuchkov {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- double calculateManhattanDistance(Coordinate,Coordinate)
+}
+class score.SinglePlayerScore {
+- String player
+- int score
+- Config.GameDifficulty difficulty
+- String preyType
+- String date
++ int compareTo(SinglePlayerScore)
++ String toString()
+}
+class game.GameMap {
+- JFrame frame
+- Snake classic
+- SnakeAbstract aSnake
+- Apple apple
+- int appleSize
+- boolean appleAppear
+- int appleTimer
+- Timer timer
+- Random r
+- Integer score
+- Integer bestscore
+- String playerName
+- Config gameConfig
++ void start()
++ void stop()
++ void actionPerformed(ActionEvent)
++ void newApple(Graphics)
++ int[] findNonOccupiedAppleSpace()
++ void checkSnake(SnakeAbstract,Graphics)
+- void saveResult()
++ boolean snakeEatApple(SnakeAbstract)
++ void snakeCollidesWall(SnakeAbstract)
++ void snakeCollidesBody(SnakeAbstract)
++ void paint(Graphics)
++ void keyPressed(KeyEvent)
++ void keyTyped(KeyEvent)
++ void keyReleased(KeyEvent)
+}
+class defaultbotframework.SnakesRunner {
+- Bot bot
+- Snake snake
+- Snake opponent
+- Coordinate mazeSize
++ Coordinate apple
++ Direction chosen_direction
++ void run()
+}
+class defaultbotframework.BotLoader {
++ Class<? extends Bot> getBotClass(String)
+}
+enum defaultbotframework.Direction {
++  UP
++  DOWN
++  RIGHT
++  LEFT
++ int dx
++ Coordinate v
+}
+class bot.SampleBot {
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+}
+class gui.StartScreen {
+- {static} long serialVersionUID
+~ int originalTile
+~ int scale
+~ int tileSize
+~ int maxScreenCol
+~ int maxScreenRow
+~ int screenWidth
+~ int screenHeight
+- ImageIcon StartScreenBackground
+- ImageIcon SettingBackground
+- ImageIcon SinglePlayerStatisticsBackground
+- ImageIcon BotVsBotStatisticsBackground
+- ImageIcon logo
+- JLabel labelContainer
+~ JButton playSingleButton
+~ JButton playBotButton
+~ JButton settingsButton
+~ JButton statisticsButton
+~ JButton quitgameButton
+~ JButton infoButton
+~ JButton backButton
+~ JButton applySettingChanges
+- {static} Combobox<String> gameDifficulty
+- {static} Combobox<String> playerColorCombobox
+- {static} Combobox<String> playerBoardColor
+- {static} Combobox<String> playerPreyType
+- {static} Combobox<String> bot1NameCombobox
+- {static} Combobox<String> bot2NameCombobox
+- {static} Combobox<String> bot1ColorCombobox
+- {static} Combobox<String> bot2ColorCombobox
+- {static} JTextField botNumberofTournaments
++ {static} String row
++ {static} String[] statisticsBoard
++ {static} String nextStatistics
++ {static} JButton changeStatisticsBoardButton
++ {static} void centreWindow(Window)
++ void run()
++ void paintSettingsFrame()
++ int countLineNumberCSV(String)
++ void paintSinglePlayerStatisticsFrame()
+- void drawRow_Statistics(String[],int)
+- void paintBotVsBotStatisticsFrame()
+- void drawRow_BotStatistics(String[],int)
++ void actionPerformed(ActionEvent)
+}
+enum game.Direction {
++  UP
++  DOWN
++  RIGHT
++  LEFT
++ int x
++ Coordinate v
+}
+class defaultbotframework.Coordinate {
++ int x
++ {static} Coordinate add(Coordinate,Coordinate)
++ Coordinate moveTo(Direction)
++ Direction getDirection(Coordinate)
++ boolean inBounds(Coordinate)
++ boolean equals(Object)
++ int hashCode()
++ int compareTo(Coordinate)
++ String toString()
+}
+class score.MultiplayerScore {
+- String bot1
+- String bot2
+- int score1
+- int score2
++ int getScore1()
++ int getScore2()
++ String getBot1()
++ String getBot2()
+}
+class score.SinglePlayerCompare {
++ {static} String READ_PATH
++ {static} String WRITE_PATH
++ {static} boolean append
++ {static} ArrayList<String> StringList
++ {static} void execution()
+- {static} void writeToHighScore(ArrayList<SinglePlayerScore>)
+- {static} ArrayList<SinglePlayerScore> convertListToSnake(ArrayList<String>)
++ {static} ArrayList<String> readAllLinesFromFile(String)
+}
+class game.Coordinate {
++ int x
++ int y
++ Coordinate add(Coordinate)
++ Coordinate moveTo(Direction)
+}
+class defaultbotframework.SnakeCanvas {
+- {static} int CELL_SIZE
+- {static} int PAD
+- {static} int SMALLER_PAD
+- {static} int SMALL_PAD
+- {static} int ApplePad
+- Config colorConfig
+- {static} Color color0
+- {static} Color color1
+- {static} Color bodyColor0
+- {static} Color bodyColor1
+- {static} Color backgroundColor
+- {static} Color borderColor
+- {static} Color appleColor
+- {static} ImageIcon apple
+~ Dimension renderSize
+- SnakeGame game
+- void fillCellWithPad(Graphics2D,Coordinate,Color,int)
+- void fillCell(Graphics2D,Coordinate,Color)
+- void fillSmallerCell(Graphics2D,Coordinate,Color)
+- void fillSmallCell(Graphics2D,Coordinate,Color)
+- void render(Graphics2D)
++ void paint(Graphics)
++ void drawString(Graphics2D,String,int,int)
++ void paintIcon(Graphics2D,ImageIcon,int,int)
++ void fillRect(Graphics2D,int,int,int,int)
+}
+class game.Config {
++ {static} boolean running
++ {static} int WIDTH
++ {static} int SQUARE_SIZE
++ {static} int boundSquare
++ {static} Color BACKGROUND
++ {static} boolean moveAtleastASpace
++ {static} Font SCORE_FONT
++ Path configPath
++ {static} File APPLE_SKIN
++ {static} File CHERRY_SKIN
++ {static} File BANANA_SKIN
++ {static} File MOUSE_SKIN
++ File SKIN
++ int DELAY
++ int appleTimer
++ GameDifficulty gameDifficulty
++ Color snakeColor
++ Color boardColor
++ String bot01Name
++ String bot02Name
++ Color bot01Color
++ Color bot02Color
++ int numberOfTournaments
++ {static} String[] botNameArr
++ void loadAllConfig()
++ void loadPreySkin()
++ void loadGameDifficulty()
++ void loadSnakeColor()
++ void loadBoardColor()
++ void loadBotvsBotMode()
+}
+enum game.GameDifficulty {
++  Easy
++  Normal
++  Hard
++  Extreme
++  Ultra
++ int difficultyOrdinal
+}
+class game.MessageWithLink {
+- {static} long serialVersionUID
+~ {static} StringBuffer getStyle()
+}
+class gui.Main {
++ {static} void main(String[])
+}
+class bot.v_smirnov {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Manhattan(Coordinate,Coordinate)
+}
+class bot.v_smirnov.SortByManhattanDistance {
+- Coordinate target
+- Coordinate head
++ int compare(Direction,Direction)
+}
+class bot.anhsBotv1 {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Distance(Coordinate,Coordinate)
+}
+class bot.anhsBotv1.SortByDistance {
+- Coordinate destination
+- Coordinate head
++ int compare(Direction,Direction)
+}
+class game.SnakeAbstract {
+- List<Snake> snakeList
+- Color snakeColor
+- Direction snakeDir
+- boolean aliveStatus
++ Coordinate getsHeadNewCoor(Coordinate,Apple,Direction)
++ void keyPressed(KeyEvent)
++ void addTail(Snake)
++ List<Snake> getSnakeList()
++ Direction getSnakeDir()
++ void setSnakeDir(Direction)
++ boolean isAliveStatus()
++ void setAliveStatus(boolean)
++ void movement(Apple)
++ void buildSnake(Graphics)
++ void keyTyped(KeyEvent)
++ void keyReleased(KeyEvent)
+}
+class defaultbotframework.SnakeGame {
+- {static} String LOG_FILE
+- {static} long TIMEOUT_THRESHOLD
++ Snake snake0
++ Coordinate mazeSize
+- Bot bot0
+- Random rnd
++ Coordinate appleCoordinate
++ String gameResult
++ int appleEaten0
++ int appleEaten1
+- int numIterationsAppleNotEaten
+- int snakeSize
++ String name0
++ long startTime
+- SnakesRunner bot0_runner
++ String toString()
+- void output(String)
++ boolean runOneStep()
++ void run()
+- Coordinate randomNonOccupiedCell()
+}
+class bot.anhsBot {
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Distance(Coordinate,Coordinate)
+}
+class bot.anhsBot.SortByDistance {
+- Coordinate destination
+- Coordinate head
++ int compare(Direction,Direction)
+}
+class bot.anhsBotv2 {
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Distance(Coordinate,Coordinate)
+}
+class bot.anhsBotv2.SortByDistance {
+- Coordinate destination
+- Coordinate head
++ int compare(Direction,Direction)
+}
+class game.Snake {
+- Coordinate xyCoor
++ void draw(Graphics,Color)
++ void drawHead(Graphics,Color)
++ int getxCoor()
++ int getyCoor()
++ Coordinate getXyCoor()
+}
+
+
+defaultbotframework.Cloneable <|.. defaultbotframework.Snake
+bot.Bot <|.. bot.tunaBot
+defaultbotframework.Runnable <|.. defaultbotframework.SnakesWindow
+bot.Bot <|.. bot.a_zhuchkov
+score.Comparable <|.. score.SinglePlayerScore
+java.awt.event.ActionListener <|.. game.GameMap
+java.awt.event.KeyListener <|.. game.GameMap
+game.JPanel <|-- game.GameMap
+defaultbotframework.Runnable <|.. defaultbotframework.SnakesRunner
+defaultbotframework.ClassLoader <|-- defaultbotframework.BotLoader
+bot.Bot <|.. bot.SampleBot
+java.awt.event.ActionListener <|.. gui.StartScreen
+gui.Runnable <|.. gui.StartScreen
+gui.JFrame <|-- gui.StartScreen
+defaultbotframework.Comparable <|.. defaultbotframework.Coordinate
+javax.swing.JPanel <|-- defaultbotframework.SnakeCanvas
+javax.swing.JEditorPane <|-- game.MessageWithLink
+bot.Bot <|.. bot.v_smirnov
+bot.v_smirnov +.. bot.v_smirnov.SortByManhattanDistance
+bot.Comparator <|.. bot.v_smirnov.SortByManhattanDistance
+bot.Bot <|.. bot.anhsBotv1
+bot.anhsBotv1 +.. bot.anhsBotv1.SortByDistance
+bot.Comparator <|.. bot.anhsBotv1.SortByDistance
+java.awt.event.KeyListener <|.. game.SnakeAbstract
+bot.Bot <|.. bot.anhsBot
+bot.anhsBot +.. bot.anhsBot.SortByDistance
+bot.Comparator <|.. bot.anhsBot.SortByDistance
+bot.Bot <|.. bot.anhsBotv2
+bot.anhsBotv2 +.. bot.anhsBotv2.SortByDistance
+bot.Comparator <|.. bot.anhsBotv2.SortByDistance
+@enduml

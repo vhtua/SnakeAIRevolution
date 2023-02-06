@@ -1,0 +1,508 @@
+@startuml
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.KeyTimes {
+- ArrayList<Float> times
+~ ArrayList getTimes()
+~ int getSize()
+~ int getInterval(float)
+~ float getTime(int)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.LinearInterpolator {
+- {static} LinearInterpolator instance
++ {static} LinearInterpolator getInstance()
++ float interpolate(float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.TimingTrigger {
+- Animator source
+- TimingTriggerEvent event
++ {static} TimingTrigger addTrigger(Animator,Animator,TimingTriggerEvent)
++ {static} TimingTrigger addTrigger(Animator,Animator,TimingTriggerEvent,boolean)
++ void timingEvent(float)
++ void begin()
++ void end()
++ void repeat()
+}
+class gui.JFramework.ModernScrollBarUI {
+- int THUMB_SIZE
+# Dimension getMaximumThumbSize()
+# Dimension getMinimumThumbSize()
+# JButton createIncreaseButton(int)
+# JButton createDecreaseButton(int)
+# void paintTrack(Graphics,JComponent,Rectangle)
+# void paintThumb(Graphics,JComponent,Rectangle)
+}
+class gui.JFramework.ModernScrollBarUI.ScrollBarButton {
++ void paint(Graphics)
+}
+class gui.timingframework.org.jdesktop.animation.timing.Animator {
+- TimingSource timer
+- TimingSource swingTimer
+- TimingSourceTarget timingSourceTarget
+- ArrayList<TimingTarget> targets
+- long startTime
+- long currentStartTime
+- boolean intRepeatCount
+- boolean timeToStop
+- boolean hasBegun
+- long pauseBeginTime
+- boolean running
+- double repeatCount
+- int startDelay
+- RepeatBehavior repeatBehavior
+- EndBehavior endBehavior
+- int duration
+- int resolution
+- float acceleration
+- float deceleration
+- float startFraction
+- Direction startDirection
+- Direction direction
+- Interpolator interpolator
++ {static} int INFINITE
+- void validateRepeatCount(double)
++ Direction getStartDirection()
++ void setStartDirection(Direction)
++ Interpolator getInterpolator()
++ void setInterpolator(Interpolator)
++ void setAcceleration(float)
++ void setDeceleration(float)
++ float getAcceleration()
++ float getDeceleration()
++ void addTarget(TimingTarget)
++ void removeTarget(TimingTarget)
+- void throwExceptionIfRunning()
++ int getResolution()
++ void setResolution(int)
++ int getDuration()
++ void setDuration(int)
++ double getRepeatCount()
++ void setRepeatCount(double)
++ int getStartDelay()
++ void setStartDelay(int)
++ RepeatBehavior getRepeatBehavior()
++ void setRepeatBehavior(RepeatBehavior)
++ EndBehavior getEndBehavior()
++ void setEndBehavior(EndBehavior)
++ float getStartFraction()
++ void setStartFraction(float)
++ void start()
++ boolean isRunning()
++ void stop()
++ void cancel()
++ void pause()
++ void resume()
+- void timingEvent(float)
+- void begin()
+- void end()
+- void repeat()
+- float timingEventPreprocessor(float)
++ long getTotalElapsedTime(long)
++ long getTotalElapsedTime()
++ long getCycleElapsedTime(long)
++ long getCycleElapsedTime()
++ float getTimingFraction()
++ void setTimer(TimingSource)
+}
+enum gui.timingframework.org.jdesktop.animation.timing.EndBehavior {
++  HOLD
++  RESET
+}
+enum gui.timingframework.org.jdesktop.animation.timing.Direction {
++  FORWARD
++  BACKWARD
+}
+enum gui.timingframework.org.jdesktop.animation.timing.RepeatBehavior {
++  LOOP
++  REVERSE
+}
+class gui.timingframework.org.jdesktop.animation.timing.Animator.TimingSourceTarget {
++ void timingSourceEvent(TimingSource)
+}
+class gui.timingframework.org.jdesktop.animation.timing.Animator.SwingTimingSource {
+~ Timer timer
++ void start()
++ void stop()
++ void setResolution(int)
++ void setStartDelay(int)
+}
+class gui.timingframework.org.jdesktop.animation.timing.Animator.TimerTarget {
++ void actionPerformed(ActionEvent)
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.FocusTriggerEvent {
++ {static} FocusTriggerEvent IN
++ {static} FocusTriggerEvent OUT
++ TriggerEvent getOppositeEvent()
+}
+interface gui.timingframework.org.jdesktop.animation.timing.interpolation.Interpolator {
++ float interpolate(float)
+}
+interface gui.timingframework.org.jdesktop.animation.timing.TimingEventListener {
++ void timingSourceEvent(TimingSource)
+}
+class gui.JFramework.ScrollBarCustom {
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.PropertySetter {
+- Object object
+- String propertyName
+- KeyFrames keyFrames
+- Method propertySetter
+- Method propertyGetter
++ {static} Animator createAnimator(int,Object,String,KeyFrames)
++ {static} Animator createAnimator(int,Object,String,T)
++ {static} Animator createAnimator(int,Object,String,Evaluator,T)
+- void setupMethodInfo()
++ void begin()
++ void timingEvent(float)
+- String getPropertyName()
+- void setStartValue(Object)
+- void setValue(Object,Method,float)
+- Class getType()
+- boolean isToAnimation()
+}
+abstract class gui.timingframework.org.jdesktop.animation.timing.TimingSource {
+- ArrayList<TimingEventListener> listeners
++ {abstract}void start()
++ {abstract}void stop()
++ {abstract}void setResolution(int)
++ {abstract}void setStartDelay(int)
++ void addEventListener(TimingEventListener)
++ void removeEventListener(TimingEventListener)
+# void timingEvent()
+}
+abstract class gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator {
+- {static} Map<Class<?>,Class<? extends Evaluator>> impls
+- {static} void register(Class<?>,Class<? extends Evaluator>)
+- {static} void deregister(Class<?>)
+~ {static} Evaluator<T> create(Class<?>)
++ {abstract}T evaluate(T,T,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorByte {
++ Byte evaluate(Byte,Byte,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorShort {
++ Short evaluate(Short,Short,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorInteger {
++ Integer evaluate(Integer,Integer,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorLong {
++ Long evaluate(Long,Long,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorFloat {
++ Float evaluate(Float,Float,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorDouble {
++ Double evaluate(Double,Double,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorColor {
++ Color evaluate(Color,Color,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorPoint2D {
+- Point2D value
++ Point2D evaluate(Point2D,Point2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorLine2D {
++ Line2D evaluate(Line2D,Line2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorDimension2D {
++ Dimension2D evaluate(Dimension2D,Dimension2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorRectangle2D {
++ Rectangle2D evaluate(Rectangle2D,Rectangle2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorRoundRectangle2D {
++ RoundRectangle2D evaluate(RoundRectangle2D,RoundRectangle2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorEllipse2D {
++ Ellipse2D evaluate(Ellipse2D,Ellipse2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorArc2D {
++ Arc2D evaluate(Arc2D,Arc2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorQuadCurve2D {
++ QuadCurve2D evaluate(QuadCurve2D,QuadCurve2D,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorCubicCurve2D {
++ CubicCurve2D evaluate(CubicCurve2D,CubicCurve2D,float)
+}
+class gui.StartScreen {
+- {static} long serialVersionUID
+~ int originalTile
+~ int scale
+~ int tileSize
+~ int maxScreenCol
+~ int maxScreenRow
+~ int screenWidth
+~ int screenHeight
+- ImageIcon StartScreenBackground
+- ImageIcon SettingBackground
+- ImageIcon SinglePlayerStatisticsBackground
+- ImageIcon BotVsBotStatisticsBackground
+- ImageIcon logo
+- JLabel labelContainer
+~ JButton playSingleButton
+~ JButton playBotButton
+~ JButton settingsButton
+~ JButton statisticsButton
+~ JButton quitgameButton
+~ JButton infoButton
+~ JButton backButton
+~ JButton applySettingChanges
+- {static} Combobox<String> gameDifficulty
+- {static} Combobox<String> playerColorCombobox
+- {static} Combobox<String> playerBoardColor
+- {static} Combobox<String> playerPreyType
+- {static} Combobox<String> bot1NameCombobox
+- {static} Combobox<String> bot2NameCombobox
+- {static} Combobox<String> bot1ColorCombobox
+- {static} Combobox<String> bot2ColorCombobox
+- {static} JTextField botNumberofTournaments
++ {static} String row
++ {static} String[] statisticsBoard
++ {static} String nextStatistics
++ {static} JButton changeStatisticsBoardButton
++ {static} void centreWindow(Window)
++ void run()
++ void paintSettingsFrame()
++ int countLineNumberCSV(String)
++ void paintSinglePlayerStatisticsFrame()
+- void drawRow_Statistics(String[],int)
+- void paintBotVsBotStatisticsFrame()
+- void drawRow_BotStatistics(String[],int)
++ void actionPerformed(ActionEvent)
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.TimingTriggerEvent {
++ {static} TimingTriggerEvent START
++ {static} TimingTriggerEvent STOP
++ {static} TimingTriggerEvent REPEAT
++ TriggerEvent getOppositeEvent()
+}
+abstract class gui.timingframework.org.jdesktop.animation.timing.triggers.Trigger {
+- boolean disarmed
+- Animator animator
+- TriggerEvent triggerEvent
+- boolean autoReverse
++ void disarm()
+# void fire(TriggerEvent)
+# void fire()
+}
+class gui.swing.shadow.GraphicsUtilities {
+- {static} GraphicsConfiguration getGraphicsConfiguration()
++ {static} BufferedImage createColorModelCompatibleImage(BufferedImage)
++ {static} BufferedImage createCompatibleImage(BufferedImage)
++ {static} BufferedImage createCompatibleImage(BufferedImage,int,int)
++ {static} BufferedImage createCompatibleImage(int,int)
++ {static} BufferedImage createCompatibleTranslucentImage(int,int)
++ {static} BufferedImage loadCompatibleImage(URL)
++ {static} BufferedImage toCompatibleImage(BufferedImage)
++ {static} BufferedImage createThumbnailFast(BufferedImage,int)
++ {static} BufferedImage createThumbnailFast(BufferedImage,int,int)
++ {static} BufferedImage createThumbnail(BufferedImage,int)
++ {static} BufferedImage createThumbnail(BufferedImage,int,int)
++ {static} int[] getPixels(BufferedImage,int,int,int,int,int[])
++ {static} void setPixels(BufferedImage,int,int,int,int,int[])
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.TriggerEvent {
+- String name
++ TriggerEvent getOppositeEvent()
+}
+class gui.Main {
++ {static} void main(String[])
+}
+class gui.swing.shadow.ShadowRenderer {
+- int size
+- float opacity
+- Color color
++ Color getColor()
++ float getOpacity()
++ int getSize()
++ BufferedImage createShadow(BufferedImage)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.KeyValues {
+- List<T> values
+- Evaluator<T> evaluator
+- Class<?> type
+- T startValue
++ {static} KeyValues<T> create(T)
++ {static} KeyValues<T> create(Evaluator,T)
+~ int getSize()
+~ Class<?> getType()
+~ void setStartValue(T)
+~ boolean isToAnimation()
+~ T getValue(int,int,float)
+}
+class gui.swing.shadow.util.RippleEffect {
+- Component component
+- Color rippleColor
+- List<Effect> effects
+- void init()
++ void addEffect(Point)
++ void reder(Graphics,Shape)
++ void setRippleColor(Color)
++ Color getRippleColor()
+}
+class gui.swing.shadow.util.RippleEffect.Effect {
+- Component component
+- Point location
+- Animator animator
+- float animate
+- void init()
++ void render(Graphics2D,Shape)
+- Shape getShape(double)
+- double getSize(Rectangle2D)
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.ActionTrigger {
++ {static} ActionTrigger addTrigger(Object,Animator)
++ void actionPerformed(ActionEvent)
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.MouseTrigger {
++ {static} MouseTrigger addTrigger(JComponent,Animator,MouseTriggerEvent)
++ {static} MouseTrigger addTrigger(JComponent,Animator,MouseTriggerEvent,boolean)
++ void mouseEntered(MouseEvent)
++ void mouseExited(MouseEvent)
++ void mousePressed(MouseEvent)
++ void mouseReleased(MouseEvent)
++ void mouseClicked(MouseEvent)
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.FocusTrigger {
++ {static} FocusTrigger addTrigger(JComponent,Animator,FocusTriggerEvent)
++ {static} FocusTrigger addTrigger(JComponent,Animator,FocusTriggerEvent,boolean)
++ void focusGained(FocusEvent)
++ void focusLost(FocusEvent)
+}
+class gui.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter {
++ void timingEvent(float)
++ void begin()
++ void end()
++ void repeat()
+}
+class gui.Combobox {
+- String labeText
+- Color lineColor
+- boolean mouseOver
++ String getLabeText()
++ void setLabeText(String)
++ Color getLineColor()
++ void setLineColor(Color)
+}
+class gui.Combobox.ComboUI {
+- Animator animator
+- boolean animateHinText
+- float location
+- boolean show
+- Combobox combo
++ void paintCurrentValueBackground(Graphics,Rectangle,boolean)
+# JButton createArrowButton()
+# ComboPopup createPopup()
++ void paint(Graphics,JComponent)
+- void createHintText(Graphics2D)
+- void createLineStyle(Graphics2D)
+- void showing(boolean)
+}
+class gui.Combobox.ComboUI.ArrowButton {
++ void paint(Graphics)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.DiscreteInterpolator {
+- {static} DiscreteInterpolator instance
++ {static} DiscreteInterpolator getInstance()
++ float interpolate(float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.KeyInterpolators {
+- ArrayList<Interpolator> interpolators
+~ float interpolate(int,float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.SplineInterpolator {
+- float x1
+- ArrayList lengths
+- Point2D.Float getXY(float)
+- float getY(float)
++ float interpolate(float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.LengthItem {
+~ float length
+~ float t
+~ float fraction
++ float getLength()
++ float getT()
++ float getFraction()
+~ void setFraction(float)
+}
+class gui.timingframework.org.jdesktop.animation.timing.interpolation.KeyFrames {
+- KeyValues keyValues
+- KeyTimes keyTimes
+- KeyInterpolators interpolators
+- void init(KeyValues,KeyTimes,Interpolator)
+~ Class getType()
+~ KeyValues getKeyValues()
+~ KeyTimes getKeyTimes()
++ int getInterval(float)
+~ Object getValue(float)
+}
+interface gui.timingframework.org.jdesktop.animation.timing.TimingTarget {
++ void timingEvent(float)
++ void begin()
++ void end()
++ void repeat()
+}
+class gui.timingframework.org.jdesktop.animation.timing.triggers.MouseTriggerEvent {
++ {static} MouseTriggerEvent ENTER
++ {static} MouseTriggerEvent EXIT
++ {static} MouseTriggerEvent PRESS
++ {static} MouseTriggerEvent RELEASE
++ {static} MouseTriggerEvent CLICK
++ TriggerEvent getOppositeEvent()
+}
+
+
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Interpolator <|.. gui.timingframework.org.jdesktop.animation.timing.interpolation.LinearInterpolator
+gui.timingframework.org.jdesktop.animation.timing.triggers.TimingTarget <|.. gui.timingframework.org.jdesktop.animation.timing.triggers.TimingTrigger
+gui.timingframework.org.jdesktop.animation.timing.triggers.Trigger <|-- gui.timingframework.org.jdesktop.animation.timing.triggers.TimingTrigger
+javax.swing.plaf.basic.BasicScrollBarUI <|-- gui.JFramework.ModernScrollBarUI
+gui.JFramework.ModernScrollBarUI +.. gui.JFramework.ModernScrollBarUI.ScrollBarButton
+gui.JFramework.JButton <|-- gui.JFramework.ModernScrollBarUI.ScrollBarButton
+gui.timingframework.org.jdesktop.animation.timing.Animator +.. gui.timingframework.org.jdesktop.animation.timing.Animator.TimingSourceTarget
+gui.timingframework.org.jdesktop.animation.timing.TimingEventListener <|.. gui.timingframework.org.jdesktop.animation.timing.Animator.TimingSourceTarget
+gui.timingframework.org.jdesktop.animation.timing.Animator +.. gui.timingframework.org.jdesktop.animation.timing.Animator.SwingTimingSource
+gui.timingframework.org.jdesktop.animation.timing.TimingSource <|-- gui.timingframework.org.jdesktop.animation.timing.Animator.SwingTimingSource
+gui.timingframework.org.jdesktop.animation.timing.Animator +.. gui.timingframework.org.jdesktop.animation.timing.Animator.TimerTarget
+gui.timingframework.org.jdesktop.animation.timing.ActionListener <|.. gui.timingframework.org.jdesktop.animation.timing.Animator.TimerTarget
+gui.timingframework.org.jdesktop.animation.timing.triggers.TriggerEvent <|-- gui.timingframework.org.jdesktop.animation.timing.triggers.FocusTriggerEvent
+javax.swing.JScrollBar <|-- gui.JFramework.ScrollBarCustom
+gui.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.PropertySetter
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorByte
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorShort
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorInteger
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorLong
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorFloat
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorDouble
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorColor
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorPoint2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorLine2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorDimension2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorRectangle2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorRoundRectangle2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorEllipse2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorArc2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorQuadCurve2D
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Evaluator <|-- gui.timingframework.org.jdesktop.animation.timing.interpolation.EvaluatorCubicCurve2D
+java.awt.event.ActionListener <|.. gui.StartScreen
+gui.Runnable <|.. gui.StartScreen
+gui.JFrame <|-- gui.StartScreen
+gui.timingframework.org.jdesktop.animation.timing.triggers.TriggerEvent <|-- gui.timingframework.org.jdesktop.animation.timing.triggers.TimingTriggerEvent
+gui.swing.shadow.util.RippleEffect +.. gui.swing.shadow.util.RippleEffect.Effect
+java.awt.event.ActionListener <|.. gui.timingframework.org.jdesktop.animation.timing.triggers.ActionTrigger
+gui.timingframework.org.jdesktop.animation.timing.triggers.Trigger <|-- gui.timingframework.org.jdesktop.animation.timing.triggers.ActionTrigger
+java.awt.event.MouseListener <|.. gui.timingframework.org.jdesktop.animation.timing.triggers.MouseTrigger
+gui.timingframework.org.jdesktop.animation.timing.triggers.Trigger <|-- gui.timingframework.org.jdesktop.animation.timing.triggers.MouseTrigger
+java.awt.event.FocusListener <|.. gui.timingframework.org.jdesktop.animation.timing.triggers.FocusTrigger
+gui.timingframework.org.jdesktop.animation.timing.triggers.Trigger <|-- gui.timingframework.org.jdesktop.animation.timing.triggers.FocusTrigger
+gui.timingframework.org.jdesktop.animation.timing.TimingTarget <|.. gui.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter
+gui.ActionListener <|.. gui.Combobox
+gui.JComboBox <|-- gui.Combobox
+gui.Combobox +.. gui.Combobox.ComboUI
+gui.BasicComboBoxUI <|-- gui.Combobox.ComboUI
+gui.Combobox.ComboUI +.. gui.Combobox.ComboUI.ArrowButton
+gui.JButton <|-- gui.Combobox.ComboUI.ArrowButton
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Interpolator <|.. gui.timingframework.org.jdesktop.animation.timing.interpolation.DiscreteInterpolator
+gui.timingframework.org.jdesktop.animation.timing.interpolation.Interpolator <|.. gui.timingframework.org.jdesktop.animation.timing.interpolation.SplineInterpolator
+gui.timingframework.org.jdesktop.animation.timing.triggers.TriggerEvent <|-- gui.timingframework.org.jdesktop.animation.timing.triggers.MouseTriggerEvent
+@enduml

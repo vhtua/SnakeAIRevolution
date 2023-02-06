@@ -1,0 +1,56 @@
+@startuml
+class gui.Main {
++ {static} void main(String[])
+}
+class gui.StartScreen {
+- {static} long serialVersionUID
+~ int originalTile
+~ int scale
+~ int tileSize
+~ int maxScreenCol
+~ int maxScreenRow
+~ int screenWidth
+~ int screenHeight
+- ImageIcon StartScreenBackground
+- ImageIcon SettingBackground
+- ImageIcon SinglePlayerStatisticsBackground
+- ImageIcon BotVsBotStatisticsBackground
+- ImageIcon logo
+- JLabel labelContainer
+~ JButton playSingleButton
+~ JButton playBotButton
+~ JButton settingsButton
+~ JButton statisticsButton
+~ JButton quitgameButton
+~ JButton infoButton
+~ JButton backButton
+~ JButton applySettingChanges
+- {static} Combobox<String> gameDifficulty
+- {static} Combobox<String> playerColorCombobox
+- {static} Combobox<String> playerBoardColor
+- {static} Combobox<String> playerPreyType
+- {static} Combobox<String> bot1NameCombobox
+- {static} Combobox<String> bot2NameCombobox
+- {static} Combobox<String> bot1ColorCombobox
+- {static} Combobox<String> bot2ColorCombobox
+- {static} JTextField botNumberofTournaments
++ {static} String row
++ {static} String[] statisticsBoard
++ {static} String nextStatistics
++ {static} JButton changeStatisticsBoardButton
++ {static} void centreWindow(Window)
++ void run()
++ void paintSettingsFrame()
++ int countLineNumberCSV(String)
++ void paintSinglePlayerStatisticsFrame()
+- void drawRow_Statistics(String[],int)
+- void paintBotVsBotStatisticsFrame()
+- void drawRow_BotStatistics(String[],int)
++ void actionPerformed(ActionEvent)
+}
+
+
+java.awt.event.ActionListener <|.. gui.StartScreen
+gui.Runnable <|.. gui.StartScreen
+gui.JFrame <|-- gui.StartScreen
+@enduml

@@ -2,98 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adb42895-9722-4cf8-9b48-d45c1a11751f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SnakeRev3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bot/SampleBot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bot/a_zhuchkov.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bot/anhsBot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bot/anhsBotv1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bot/tunaBot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bot/v_smirnov.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/Bot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/BotLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/Coordinate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/Snake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/SnakeCanvas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/SnakeGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/SnakesRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/SnakesUIMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/SnakesWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/HeadToHead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/MultiplayerStat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Combobox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/JFramework/ModernScrollBarUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/JFramework/ScrollBarCustom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/StartScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/img/SinglePlayerStatisticsv4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/img/backgrv3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/img/botStatistics3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/img/settingsv5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/swing/shadow/GraphicsUtilities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/swing/shadow/ShadowRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/swing/shadow/util/RippleEffect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/Animator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/TimingEventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/TimingSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/TimingTarget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/TimingTargetAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/DemoResources.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/MultiStepRace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/RaceControlPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/RaceGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/SoundEffects.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/TrackView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/beetle-red.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/drift.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/track.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/demos/vroom.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/DiscreteInterpolator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/Evaluator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/Interpolator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/KeyFrames.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/KeyInterpolators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/KeyTimes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/KeyValues.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/LinearInterpolator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/PropertySetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/SplineInterpolator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/interpolation/package.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/package.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/ActionTrigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/FocusTrigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/FocusTriggerEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/MouseTrigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/MouseTriggerEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/TimingTrigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/TimingTriggerEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/Trigger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/TriggerEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/timingframework/org/jdesktop/animation/timing/triggers/package.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Apple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Coordinate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/GameFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/GameMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/MessageWithLink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/ScoreMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Snake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/SnakeAbstract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/SnakeScore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/allHighScore.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/allScoreLog.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/gameSettings.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Skin/apple8bit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Skin/banana.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Skin/cherry.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Skin/mouse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Bot/anhsBotv2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeRev3.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeRev3.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SnakeRev3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeRev3.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/allHighScore.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/allHighScore.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/iteration_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/iteration_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/multiscoreboard.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/multiscoreboard.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/total.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/total.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bot/anhsBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bot/anhsBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/HeadToHead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/score/MultiplayerScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DefaultBotFrameWork/score/MultiplayerStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/score/MultiplayerCompare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StartScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/ScoreMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/score/SinglePlayerCompare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/SnakeScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/score/SinglePlayerScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/gameSettings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/gameSettings.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,26 +28,45 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="2LK6FBmdKyEwKuk6uRDtr6H8grq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/ADMIN/eclipse-workspace/SnakeRev3/src",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ADMIN\eclipse-workspace\SnakeRev3\src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -132,7 +76,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675607321724</updated>
+      <workItem from="1675634022235" duration="1168000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

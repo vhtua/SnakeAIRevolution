@@ -1,0 +1,122 @@
+@startuml
+class defaultbotframework.SnakesWindow {
+- JFrame frame
+- SnakeCanvas canvas
+- SnakeGame game
+- {static} int TIME_LIMIT_PER_GAME
+- {static} int TIME_LIMIT_PER_STEP
+- boolean running
++ {static} void centreWindow(Window)
++ void run()
++ void closeWindow()
+}
+class defaultbotframework.SnakeCanvas {
+- {static} int CELL_SIZE
+- {static} int PAD
+- {static} int SMALLER_PAD
+- {static} int SMALL_PAD
+- {static} int ApplePad
+- Config colorConfig
+- {static} Color color0
+- {static} Color color1
+- {static} Color bodyColor0
+- {static} Color bodyColor1
+- {static} Color backgroundColor
+- {static} Color borderColor
+- {static} Color appleColor
+- {static} ImageIcon apple
+~ Dimension renderSize
+- SnakeGame game
+- void fillCellWithPad(Graphics2D,Coordinate,Color,int)
+- void fillCell(Graphics2D,Coordinate,Color)
+- void fillSmallerCell(Graphics2D,Coordinate,Color)
+- void fillSmallCell(Graphics2D,Coordinate,Color)
+- void render(Graphics2D)
++ void paint(Graphics)
++ void drawString(Graphics2D,String,int,int)
++ void paintIcon(Graphics2D,ImageIcon,int,int)
++ void fillRect(Graphics2D,int,int,int,int)
+}
+class defaultbotframework.SnakesRunner {
+- Bot bot
+- Snake snake
+- Snake opponent
+- Coordinate mazeSize
++ Coordinate apple
++ Direction chosen_direction
++ void run()
+}
+class defaultbotframework.BotLoader {
++ Class<? extends Bot> getBotClass(String)
+}
+enum defaultbotframework.Direction {
++  UP
++  DOWN
++  RIGHT
++  LEFT
++ int dx
++ Coordinate v
+}
+class defaultbotframework.Snake {
++ HashSet<Coordinate> elements
++ Deque<Coordinate> body
++ Coordinate mazeSize
++ Coordinate getHead()
++ boolean moveTo(Direction,boolean)
++ boolean headCollidesWith(Snake)
++ Snake clone()
+}
+class defaultbotframework.SnakesUIMain {
+- {static} String LOG_DIRECTORY_PATH
+- {static} Config gameConfig
+- {static} FileWriter results_fw
+- {static} int[][] total_results_table
++ {static} String bot01
++ {static} String bot02
++ {static} boolean runningThread
++ {static} void run()
++ {static} void start_tournament_n_times(int,ArrayList<Class<? extends Bot>>)
++ {static} void start_round_robin_tournament(ArrayList<Class<? extends Bot>>)
+}
+class defaultbotframework.SnakeGame {
+- {static} String LOG_FILE
+- {static} long TIMEOUT_THRESHOLD
++ Snake snake0
++ Coordinate mazeSize
+- Bot bot0
+- Random rnd
++ Coordinate appleCoordinate
++ String gameResult
++ int appleEaten0
++ int appleEaten1
+- int numIterationsAppleNotEaten
+- int snakeSize
++ String name0
++ long startTime
+- SnakesRunner bot0_runner
++ String toString()
+- void output(String)
++ boolean runOneStep()
++ void run()
+- Coordinate randomNonOccupiedCell()
+}
+class defaultbotframework.Coordinate {
++ int x
++ {static} Coordinate add(Coordinate,Coordinate)
++ Coordinate moveTo(Direction)
++ Direction getDirection(Coordinate)
++ boolean inBounds(Coordinate)
++ boolean equals(Object)
++ int hashCode()
++ int compareTo(Coordinate)
++ String toString()
+}
+
+
+defaultbotframework.Runnable <|.. defaultbotframework.SnakesWindow
+javax.swing.JPanel <|-- defaultbotframework.SnakeCanvas
+defaultbotframework.Runnable <|.. defaultbotframework.SnakesRunner
+defaultbotframework.ClassLoader <|-- defaultbotframework.BotLoader
+defaultbotframework.Cloneable <|.. defaultbotframework.Snake
+defaultbotframework.Comparable <|.. defaultbotframework.Coordinate
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+class score.SinglePlayerCompare {
++ {static} String READ_PATH
++ {static} String WRITE_PATH
++ {static} boolean append
++ {static} ArrayList<String> StringList
++ {static} void execution()
+- {static} void writeToHighScore(ArrayList<SinglePlayerScore>)
+- {static} ArrayList<SinglePlayerScore> convertListToSnake(ArrayList<String>)
++ {static} ArrayList<String> readAllLinesFromFile(String)
+}
+class score.SinglePlayerScore {
+- String player
+- int score
+- Config.GameDifficulty difficulty
+- String preyType
+- String date
++ int compareTo(SinglePlayerScore)
++ String toString()
+}
+class score.MultiplayerCompare {
++ {static} String LOG_PATH
++ {static} String RECORDTABLE
++ {static} boolean append
++ {static} ArrayList<String> aList
++ {static} String[][] TableRecord
++ {static} void execution()
+- {static} void addRecordtoTableRecord(MultiplayerScore)
+- {static} void generateTableRecord(String[][])
+- {static} ArrayList<MultiplayerScore> convertListToEachRecord(ArrayList<String>)
+- {static} ArrayList<String> readAllLinesFromFile(String)
+- {static} void writeAllToHomeAwayRecordTable(String,boolean)
+- {static} int posBotinTable(String)
+}
+class score.MultiplayerScore {
+- String bot1
+- String bot2
+- int score1
+- int score2
++ int getScore1()
++ int getScore2()
++ String getBot1()
++ String getBot2()
+}
+
+
+score.Comparable <|.. score.SinglePlayerScore
+@enduml

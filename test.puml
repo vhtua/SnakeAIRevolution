@@ -1,0 +1,79 @@
+@startuml
+class bot.tunaBot {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+}
+class bot.a_zhuchkov {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- double calculateManhattanDistance(Coordinate,Coordinate)
+}
+class bot.anhsBot {
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Distance(Coordinate,Coordinate)
+}
+class bot.anhsBot.SortByDistance {
+- Coordinate destination
+- Coordinate head
++ int compare(Direction,Direction)
+}
+class bot.anhsBotv2 {
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Distance(Coordinate,Coordinate)
+}
+class bot.anhsBotv2.SortByDistance {
+- Coordinate destination
+- Coordinate head
++ int compare(Direction,Direction)
+}
+interface bot.Bot {
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+}
+class bot.SampleBot {
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+}
+class bot.v_smirnov {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Manhattan(Coordinate,Coordinate)
+}
+class bot.v_smirnov.SortByManhattanDistance {
+- Coordinate target
+- Coordinate head
++ int compare(Direction,Direction)
+}
+class bot.anhsBotv1 {
+- Random rnd
+- {static} Direction[] DIRECTIONS
++ Direction chooseDirection(Snake,Snake,Coordinate,Coordinate)
+- {static} int Distance(Coordinate,Coordinate)
+}
+class bot.anhsBotv1.SortByDistance {
+- Coordinate destination
+- Coordinate head
++ int compare(Direction,Direction)
+}
+
+
+bot.Bot <|.. bot.tunaBot
+bot.Bot <|.. bot.a_zhuchkov
+bot.Bot <|.. bot.anhsBot
+bot.anhsBot +.. bot.anhsBot.SortByDistance
+bot.Comparator <|.. bot.anhsBot.SortByDistance
+bot.Bot <|.. bot.anhsBotv2
+bot.anhsBotv2 +.. bot.anhsBotv2.SortByDistance
+bot.Comparator <|.. bot.anhsBotv2.SortByDistance
+bot.Bot <|.. bot.SampleBot
+bot.Bot <|.. bot.v_smirnov
+bot.v_smirnov +.. bot.v_smirnov.SortByManhattanDistance
+bot.Comparator <|.. bot.v_smirnov.SortByManhattanDistance
+bot.Bot <|.. bot.anhsBotv1
+bot.anhsBotv1 +.. bot.anhsBotv1.SortByDistance
+bot.Comparator <|.. bot.anhsBotv1.SortByDistance
+@enduml

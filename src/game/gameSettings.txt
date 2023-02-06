@@ -1,0 +1,16 @@
+gameDifficulty
+Easy
+boardColor
+black
+snakeColor
+red
+preyType
+apple
+bot01
+anhsBot
+violet
+bot02
+a_zhuchkov
+orange
+numberOfTournaments
+1
