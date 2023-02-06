@@ -12,7 +12,7 @@
     <list default="true" id="599fc710-be0e-425b-86c3-8685302b05b0" name="Changes" comment="change location of the csv file">
       <change beforePath="$PROJECT_DIR$/SnakeRev3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeRev3.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/SnakeAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/SnakeAbstract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/MessageWithLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/MessageWithLink.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

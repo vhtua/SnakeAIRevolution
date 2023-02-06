@@ -245,8 +245,8 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
     }
 
     /**
-     *
-     * @param g 
+     * paint the game board component, game score and instruction texts
+     * @param g
      */
     public void paint(Graphics g) {
         g.clearRect(0, 0, Config.WIDTH, Config.HEIGHT);
@@ -283,6 +283,10 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         checkSnake(aSnake, g);
     }
 
+    /**
+     * check whether the space key is pressed, the game will begin
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (aSnake.isAliveStatus() && e.getKeyCode() == KeyEvent.VK_SPACE) {
