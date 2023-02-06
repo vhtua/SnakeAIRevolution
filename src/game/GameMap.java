@@ -17,7 +17,6 @@ import java.util.Random;
 public class GameMap extends JPanel implements ActionListener, KeyListener {
     private JFrame frame = new JFrame();
 
-
     // Default Settings for the Snake
     private Snake classic = new Snake(Config.boundSquare,Config.boundSquare);
     private SnakeAbstract aSnake;
@@ -41,7 +40,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
     // ============================= METHODS ======================================
 
     /**
-     * starts creates the Map and the Snake
+     * start creating the Map and the Snake
      * @throws IOException
      */
     public GameMap() throws IOException {
@@ -73,7 +72,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
     }
 
     /**
-     * starts
+     * start the gameplay
      */
     public void start() {
         timer = new Timer(gameConfig.DELAY, this);
@@ -81,7 +80,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
     }
 
     /**
-     * stop the
+     * stop the gameplay
      */
     public void stop() {
         Config.running = false;
@@ -99,6 +98,10 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /**
+     * spawn new Apple position after it is eaten by a snake or after an amount of time
+     * @param g
+     */
     public void newApple(Graphics g) {
         if (!appleAppear || appleTimer == 1) {
             //it disappears or 20secs passed
@@ -116,6 +119,10 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         apple.drawApple(g);
     }
 
+    /**
+     * return the proper position for the apple to respawn (on the bound of the game ground and not on the snake)
+     * @return
+     */
     public int[] findNonOccupiedAppleSpace() {
         int[] coor = new int[2];
         while (true) {
@@ -126,12 +133,12 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
             for (int i = 0; i < aSnake.getSnakeList().size() ; i++) {
                 if (xApple == aSnake.getSnakeList().get(i).getxCoor() &&
                         yApple == aSnake.getSnakeList().get(i).getyCoor()) {
-                    newAppleCoor = false;//apple on snake!
+                    newAppleCoor = false;   //apple on snake!
                     break;
                 }
                 if ((xApple < Config.boundSquare || xApple > Config.WIDTH/Config.SQUARE_SIZE - Config.boundSquare-1) ||
                         (yApple < Config.boundSquare || yApple > Config.HEIGHT/Config.SQUARE_SIZE - Config.boundSquare-1)) {
-                    newAppleCoor = false;//apple out of bound!
+                    newAppleCoor = false;   //apple out of bound!
                     break;
                 }
             }
@@ -145,7 +152,12 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         return coor;
     }
 
-    public void checkSnake (SnakeAbstract snake, Graphics g) {
+    /**
+     * check the status of the snake consecutively while the gameplay is running
+     * @param snake
+     * @param g
+     */
+    public void checkSnake(SnakeAbstract snake, Graphics g) {
         if (!snake.isAliveStatus()) {
             //end game
             if (bestscore < score) {
@@ -159,7 +171,6 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
             snakeCollidesWall(snake);
             snakeCollidesBody(snake);
 
-
             //snake eats apple?
             if (snakeEatApple(snake)) {
                 score++;
@@ -170,16 +181,15 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /**
+     * save the gameplay result to a file
+     */
     private void saveResult() {
         try {
             String path = "./logs/allScoreLog.csv";
-
             FileWriter write = new FileWriter(path,true);
-
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
-
-            // ask for the Name of player
 
             //format for saving
             List<String> record = Arrays.asList("Player",score.toString(),gameConfig.gameDifficulty.toString(),apple.getSkin(),dtf.format(now));
@@ -193,12 +203,21 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         frame.dispose();
     }
 
+    /**
+     * check whether the Snake ate the apple at the current time or not
+     * @param snake
+     * @return
+     */
     public boolean snakeEatApple(SnakeAbstract snake) {
         int snakeSize = snake.getSnakeList().size();
         return snake.getSnakeList().get(snakeSize - 1).getxCoor() == apple.getxApple()
                 && snake.getSnakeList().get(snakeSize - 1).getyCoor() == apple.getyApple();
     }
 
+    /**
+     * check whether collisions happen between the Snake and the boundaries of the gameplay
+     * @param snake
+     */
     public void snakeCollidesWall (SnakeAbstract snake) {
         int listSize = snake.getSnakeList().size();
         if (snake.getSnakeList().get(listSize - 1).getxCoor() < Config.boundSquare
@@ -209,6 +228,10 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /**
+     * check whether the Snake collides with its own body
+     * @param aSnake
+     */
     public void snakeCollidesBody(SnakeAbstract aSnake) {
         Snake s = aSnake.getSnakeList().get(aSnake.getSnakeList().size() - 1);
         //snake collides its own body
@@ -221,6 +244,10 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /**
+     *
+     * @param g 
+     */
     public void paint(Graphics g) {
         g.clearRect(0, 0, Config.WIDTH, Config.HEIGHT);
 
@@ -262,6 +289,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
             Config.running = true;
         }
     }
+
     @Override
     public void keyTyped(KeyEvent e) {}
     @Override
