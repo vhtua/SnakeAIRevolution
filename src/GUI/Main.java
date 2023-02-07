@@ -1,7 +1,4 @@
-package GUI;
-
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+package gui;
 
 public class Main {
     public static void main(String[] args) throws Exception {

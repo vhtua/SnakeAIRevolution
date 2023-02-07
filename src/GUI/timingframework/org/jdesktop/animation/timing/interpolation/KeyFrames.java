@@ -29,10 +29,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing.interpolation;
-
-import java.lang.reflect.Method;
-import GUI.timingframework.org.jdesktop.animation.timing.*;
+package gui.timingframework.org.jdesktop.animation.timing.interpolation;
 
 /**
  *

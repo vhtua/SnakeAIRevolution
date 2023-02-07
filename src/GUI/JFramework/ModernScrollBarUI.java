@@ -1,4 +1,4 @@
-package GUI.JFramework;
+package gui.JFramework;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -29,12 +29,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing.triggers;
+package gui.timingframework.org.jdesktop.animation.timing.triggers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Method;
-import GUI.timingframework.org.jdesktop.animation.timing.*;
+import gui.timingframework.org.jdesktop.animation.timing.*;
 
 /**
  * ActionTrigger handles action events and

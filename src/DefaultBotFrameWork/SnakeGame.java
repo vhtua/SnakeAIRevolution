@@ -1,4 +1,6 @@
-package DefaultBotFrameWork;
+package defaultbotframework;
+
+import bot.Bot;
 
 import java.io.FileWriter;
 import java.io.IOException;

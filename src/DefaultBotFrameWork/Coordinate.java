@@ -1,4 +1,4 @@
-package DefaultBotFrameWork;
+package defaultbotframework;
 
 import java.util.Objects;
 

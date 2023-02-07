@@ -29,12 +29,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing.triggers;
+package gui.timingframework.org.jdesktop.animation.timing.triggers;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.JComponent;
-import GUI.timingframework.org.jdesktop.animation.timing.*;
+import gui.timingframework.org.jdesktop.animation.timing.*;
 
 /**
  * FocusTrigger handles focus events

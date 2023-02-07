@@ -29,10 +29,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing.triggers;
+package gui.timingframework.org.jdesktop.animation.timing.triggers;
 
-import GUI.timingframework.org.jdesktop.animation.timing.Animator;
-import GUI.timingframework.org.jdesktop.animation.timing.*;
+import gui.timingframework.org.jdesktop.animation.timing.Animator;
+import gui.timingframework.org.jdesktop.animation.timing.*;
 
 /**
  * TimingTrigger handles timing events and starts the animator

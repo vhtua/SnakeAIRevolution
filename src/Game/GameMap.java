@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -15,21 +14,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyListener {
+public class GameMap extends JPanel implements ActionListener, KeyListener {
+    private JFrame frame = new JFrame();
 
-
-
-    // <-- DEFAULT SETTING FOR SNAKE  ---> //
+    // Default Settings for the Snake
     private Snake classic = new Snake(Config.boundSquare,Config.boundSquare);
-
-
-
-    //<--- ARRAY OF EACH BODY PART ---> //
-    //list <--- array easily overflown
     private SnakeAbstract aSnake;
 
-
-    // <--- APPLE SIZE ---> //
+    // Apple attributes
     private Apple apple;
     private final int appleSize = Config.SQUARE_SIZE;
     private boolean appleAppear;
@@ -45,6 +37,12 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
     // Game Config
     private Config gameConfig;
 
+    // ============================= METHODS ======================================
+
+    /**
+     * start creating the Map and the Snake
+     * @throws IOException
+     */
     public GameMap() throws IOException {
         // init the game Config
         gameConfig = new Config();
@@ -63,19 +61,36 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         r = new Random();
         appleAppear = false;
         start();
+
+        frame.add(this);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setTitle("Snake Game");
+        frame.setResizable(false);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
-
+    /**
+     * start the gameplay
+     */
     public void start() {
         timer = new Timer(gameConfig.DELAY, this);
         timer.start();
     }
 
+    /**
+     * stop the gameplay
+     */
     public void stop() {
         Config.running = false;
         timer.stop();
     }
-    //     <--- GAME RUNNING ---> //
+
+    /**
+     * while the game is running, the frame is being updated
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (Config.running) {
@@ -83,6 +98,10 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         }
     }
 
+    /**
+     * spawn new Apple position after it is eaten by a snake or after an amount of time
+     * @param g
+     */
     public void newApple(Graphics g) {
         if (!appleAppear || appleTimer == 1) {
             //it disappears or 20secs passed
@@ -100,6 +119,10 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         apple.drawApple(g);
     }
 
+    /**
+     * return the proper position for the apple to respawn (on the bound of the game ground and not on the snake)
+     * @return
+     */
     public int[] findNonOccupiedAppleSpace() {
         int[] coor = new int[2];
         while (true) {
@@ -110,12 +133,12 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
             for (int i = 0; i < aSnake.getSnakeList().size() ; i++) {
                 if (xApple == aSnake.getSnakeList().get(i).getxCoor() &&
                         yApple == aSnake.getSnakeList().get(i).getyCoor()) {
-                    newAppleCoor = false;//apple on snake!
+                    newAppleCoor = false;   //apple on snake!
                     break;
                 }
                 if ((xApple < Config.boundSquare || xApple > Config.WIDTH/Config.SQUARE_SIZE - Config.boundSquare-1) ||
                         (yApple < Config.boundSquare || yApple > Config.HEIGHT/Config.SQUARE_SIZE - Config.boundSquare-1)) {
-                    newAppleCoor = false;//apple out of bound!
+                    newAppleCoor = false;   //apple out of bound!
                     break;
                 }
             }
@@ -129,14 +152,17 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         return coor;
     }
 
-    public void checkSnake (SnakeAbstract snake, Graphics g) {
+    /**
+     * check the status of the snake consecutively while the gameplay is running
+     * @param snake
+     * @param g
+     */
+    public void checkSnake(SnakeAbstract snake, Graphics g) {
         if (!snake.isAliveStatus()) {
             //end game
             if (bestscore < score) {
                 bestscore = score;
             }
-            System.out.println("The best score: " + bestscore);
-
             stop();
             saveResult();
         } else {
@@ -144,7 +170,6 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
             snake.movement(apple);
             snakeCollidesWall(snake);
             snakeCollidesBody(snake);
-
 
             //snake eats apple?
             if (snakeEatApple(snake)) {
@@ -156,16 +181,15 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         }
     }
 
+    /**
+     * save the gameplay result to a file
+     */
     private void saveResult() {
         try {
-            String path = "./src/Game/allScoreLog.csv";
-
+            String path = "./logs/allScoreLog.csv";
             FileWriter write = new FileWriter(path,true);
-
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
-
-            // ask for the Name of player
 
             //format for saving
             List<String> record = Arrays.asList("Player",score.toString(),gameConfig.gameDifficulty.toString(),apple.getSkin(),dtf.format(now));
@@ -176,15 +200,24 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.exit(1);
+        frame.dispose();
     }
 
+    /**
+     * check whether the Snake ate the apple at the current time or not
+     * @param snake
+     * @return
+     */
     public boolean snakeEatApple(SnakeAbstract snake) {
         int snakeSize = snake.getSnakeList().size();
         return snake.getSnakeList().get(snakeSize - 1).getxCoor() == apple.getxApple()
                 && snake.getSnakeList().get(snakeSize - 1).getyCoor() == apple.getyApple();
     }
 
+    /**
+     * check whether collisions happen between the Snake and the boundaries of the gameplay
+     * @param snake
+     */
     public void snakeCollidesWall (SnakeAbstract snake) {
         int listSize = snake.getSnakeList().size();
         if (snake.getSnakeList().get(listSize - 1).getxCoor() < Config.boundSquare
@@ -195,6 +228,10 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         }
     }
 
+    /**
+     * check whether the Snake collides with its own body
+     * @param aSnake
+     */
     public void snakeCollidesBody(SnakeAbstract aSnake) {
         Snake s = aSnake.getSnakeList().get(aSnake.getSnakeList().size() - 1);
         //snake collides its own body
@@ -207,6 +244,10 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
         }
     }
 
+    /**
+     * paint the game board component, game score and instruction texts
+     * @param g
+     */
     public void paint(Graphics g) {
         g.clearRect(0, 0, Config.WIDTH, Config.HEIGHT);
 
@@ -230,18 +271,29 @@ public class GameMap extends JPanel implements /*Runnable,*/ActionListener, KeyL
 
         g.setFont(Config.SCORE_FONT);
         g.setColor(Color.WHITE);
-        g.drawString("SCORE: " + String.format ("%04d", score), Config.SQUARE_SIZE*2 , Config.SQUARE_SIZE*2 - 20);
+        g.drawString("SCORE: " + String.format("%04d", score), Config.SQUARE_SIZE*2 , Config.SQUARE_SIZE*2 - 20);
+
+        if (!Config.running) {
+            g.setFont(Config.SCORE_FONT);
+            g.setColor(Color.WHITE);
+            g.drawString("Press space to start", Config.SQUARE_SIZE*8 + 20 , Config.SQUARE_SIZE*12);
+        }
 
         newApple(g);
         checkSnake(aSnake, g);
     }
 
+    /**
+     * check whether the space key is pressed, the game will begin
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (aSnake.isAliveStatus() && e.getKeyCode() == KeyEvent.VK_SPACE) {
             Config.running = true;
         }
     }
+
     @Override
     public void keyTyped(KeyEvent e) {}
     @Override

@@ -1,22 +1,13 @@
-package DefaultBotFrameWork;
+package defaultbotframework;
 
-import DefaultBotFrameWork.*;
-import GUI.StartScreen;
-import Game.Config;
+import bot.Bot;
+import game.Config;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Implements tournament of the snake game with several rounds
@@ -44,10 +35,6 @@ public class SnakesUIMain {
 
 
     public static void run() throws InterruptedException, IOException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-//        if (args.length < 2) {
-//            System.err.println("You must provide two classes implementing the Bot interface.");
-//            System.exit(1);
-//        }
         ArrayList<Class<? extends Bot>> bots = new ArrayList<>();
         BotLoader loader = new BotLoader();
 

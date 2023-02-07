@@ -1,4 +1,4 @@
-package Game;
+package game;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * This class implements all the Configurations for the Game
+ */
 public class Config {
-
+    // Game General Config
     public static boolean running = false;
     public static final int WIDTH = 750, HEIGHT = 750;
     public static final int SQUARE_SIZE = 30;
@@ -26,7 +29,7 @@ public class Config {
     public int DELAY;
     public int appleTimer;
 
-    // GAME MODE
+    // Single Player Game Mode
     public enum GameDifficulty {
         Easy(0),
         Normal(1),
@@ -34,7 +37,7 @@ public class Config {
         Extreme(3),
         Ultra(4);
 
-        int difficultyOrdinal;
+        public final int difficultyOrdinal;
         GameDifficulty (int difficulty) {
             this.difficultyOrdinal = difficulty;
         }
@@ -48,7 +51,7 @@ public class Config {
     // GameBoard Config
     public Color boardColor;
 
-    // botVsbot
+    // botVsbot Config
     public String bot01Name;
     public String bot02Name;
     public Color bot01Color;
@@ -57,7 +60,11 @@ public class Config {
     public static String[] botNameArr = {"a_zhuchkov", "anhsBot", "SampleBot", "tunaBot", "v_smirnov"};
 
     // ============================= METHODS ======================================
-    // init the Game Config
+
+    /**
+     * initialize all the Game Configs
+     * @throws IOException
+     */
     public void loadAllConfig() throws IOException {
         this.loadPreySkin();
         this.loadGameDifficulty();
@@ -65,7 +72,10 @@ public class Config {
         this.loadBoardColor();
     }
 
-    // load Skin for the Prey
+    /**
+     * load the skin for the prey in the Single Player Mode
+     * @throws IOException
+     */
     public void loadPreySkin() throws IOException {
         // default skin = apple
         SKIN = new File("./src/Game/skin/apple8bit.png");
@@ -79,8 +89,10 @@ public class Config {
         }
     }
 
-
-    // load game Difficulty
+    /**
+     * load the game difficulties in Single Player Mode
+     * @throws IOException
+     */
     public void loadGameDifficulty() throws IOException {
         GameDifficulty gameModeInput = GameDifficulty.valueOf(Files.readAllLines(configPath).get(1));
         this.gameDifficulty = gameModeInput;
@@ -110,6 +122,10 @@ public class Config {
     }
 
 
+    /**
+     * load the Snake Color of the Single Player Mode
+     * @throws IOException
+     */
     public void loadSnakeColor() throws IOException {
         String snakeColorInput = Files.readAllLines(configPath).get(5);
 
@@ -123,7 +139,10 @@ public class Config {
         }
     }
 
-
+    /**
+     * load the Color of the Board Border in the Single Player Mode
+     * @throws IOException
+     */
     public void loadBoardColor() throws IOException {
         String boardColorInput = Files.readAllLines(configPath).get(3);
 
@@ -136,12 +155,16 @@ public class Config {
         }
     }
 
+    /**
+     * load all configs for the BotvsBot Mode (the names and the color of the 2 bots)
+     * @throws IOException
+     */
     public void loadBotvsBotMode() throws IOException {
         String bot01ColorInput = Files.readAllLines(configPath).get(10);
         String bot02ColorInput = Files.readAllLines(configPath).get(13);
 
-        this.bot01Name = "Bot." + Files.readAllLines(configPath).get(9);
-        this.bot02Name = "Bot." + Files.readAllLines(configPath).get(12);
+        this.bot01Name = "bot." + Files.readAllLines(configPath).get(9);
+        this.bot02Name = "bot." + Files.readAllLines(configPath).get(12);
 
         switch (bot01ColorInput) {
             case "sky blue"     -> this.bot01Color = new Color(92, 192, 255);
@@ -152,7 +175,7 @@ public class Config {
 
         switch (bot02ColorInput) {
             case "white"    -> this.bot02Color = new Color(255, 255, 255);
-            case "grey"     -> this.bot02Color = new Color(128, 128, 128);
+            case "gray"     -> this.bot02Color = new Color(128, 128, 128);
             case "orange"   -> this.bot02Color = Color.ORANGE;
             case "yellow"   -> this.bot02Color = Color.YELLOW;
         }

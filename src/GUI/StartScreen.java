@@ -1,11 +1,9 @@
-package GUI;
+package gui;
 
-import DefaultBotFrameWork.SnakesUIMain;
-import Game.Config;
-import Game.GameFrame;
-import Game.MessageWithLink;
-import Game.ScoreMain;
-import DefaultBotFrameWork.score.MultiplayerStat;
+import defaultbotframework.SnakesUIMain;
+import game.*;
+import score.MultiplayerCompare;
+import score.SinglePlayerCompare;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +12,9 @@ import java.io.*;
 import java.util.Objects;
 import javax.swing.*;
 
-
+/**
+ *
+ */
 public class StartScreen extends JFrame implements ActionListener, Runnable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -27,10 +27,10 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
     final int maxScreenRow = 16;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
-    private final ImageIcon StartScreenBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/GUI/img/backgrv3.jpg")));
-    private final ImageIcon SettingBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/GUI/img/settingsv5.jpg")));
-    private final ImageIcon SinglePlayerStatisticsBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/GUI/img/SinglePlayerStatisticsv4.png")));
-    private final ImageIcon BotVsBotStatisticsBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/GUI/img/botStatistics3.png")));
+    private final ImageIcon StartScreenBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/gui/img/backgrv3.jpg")));
+    private final ImageIcon SettingBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/gui/img/settingsv5.jpg")));
+    private final ImageIcon SinglePlayerStatisticsBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/gui/img/SinglePlayerStatisticsv4.png")));
+    private final ImageIcon BotVsBotStatisticsBackground = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/gui/img/botStatistics3.png")));
     private ImageIcon logo;
     private JLabel labelContainer;
     JButton playSingleButton = new JButton();
@@ -43,13 +43,12 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
 
     // Settings GUI.Frame
     JButton applySettingChanges = new JButton();
-    JTable statisticsTable = new JTable();
-    //----> single player
+        //----> single player
     private final static Combobox<String> gameDifficulty = new Combobox<>();
     private final static Combobox<String> playerColorCombobox = new Combobox<>();
     private final static Combobox<String> playerBoardColor = new Combobox<>();
     private final static Combobox<String> playerPreyType = new Combobox<>();
-    //----> botVsBot
+        //----> botVsBot
     private final static Combobox<String> bot1NameCombobox = new Combobox<>();
     private final static Combobox<String> bot2NameCombobox = new Combobox<>();
     private final static Combobox<String> bot1ColorCombobox = new Combobox<>();
@@ -207,19 +206,20 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         infoButton.setBackground(Color.black);
         infoButton.addActionListener(this);
 
-        ScoreMain.execution();
+        SinglePlayerCompare.execution();
+        MultiplayerCompare.execution();
     }
 
-
-    public void paintStartScreen() {
-        logo = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/GUI/img/logo.png")));
+    @Override
+    public void run() {
+        logo = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/gui/img/logo.png")));
         this.setIconImage(logo.getImage());
 
         labelContainer = new JLabel(StartScreenBackground);
         labelContainer.setSize(new Dimension(screenWidth, screenHeight));
 
         this.setTitle("SnakeAI Revolution");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setLayout(null);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -239,16 +239,10 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
     }
 
     /**
-     *
+     * draw the Settings GUI frame of the game
      */
     public void paintSettingsFrame() {
         this.setTitle("SnakeAI Revolution/Settings");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(null);
-        this.setResizable(false);
-        this.setSize(screenWidth,screenHeight);
-        this.setVisible(true);
-
 
         gameDifficulty.setPreferredSize(new Dimension(200, 40));
         this.add(gameDifficulty);
@@ -269,7 +263,6 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         this.add(playerBoardColor);
         playerBoardColor.setBounds(586 + insets.left, 142 + insets.top, size.width, size.height);
 
-
         // botVsbot Settings
         bot1NameCombobox.setPreferredSize(new Dimension(200, 40));
         this.add(bot1NameCombobox);
@@ -287,17 +280,9 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         this.add(bot2ColorCombobox);
         bot2ColorCombobox.setBounds(541 + insets.left, 512 + insets.top, size.width, size.height);
 
-
-
         botNumberofTournaments.setPreferredSize(new Dimension(150, 40));
         this.add(botNumberofTournaments);
         botNumberofTournaments.setBounds(593 + insets.left, 577 + insets.top, 150, 40);
-
-
-        applySettingChanges.addActionListener(e -> {
-
-        });
-
 
         labelContainer = new JLabel(SettingBackground);
         labelContainer.setSize(new Dimension(screenWidth, screenHeight));
@@ -306,36 +291,14 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         this.add(backButton);
         this.add(labelContainer);
         this.setVisible(true);
-
-        //centreWindow(this);
     }
 
-
-    public int countLineNumberCSV(String filename) throws IOException {
-        try (InputStream is = new BufferedInputStream(new FileInputStream(filename))) {
-            byte[] c = new byte[1024];
-            int count = 0;
-            int readChars = 0;
-            boolean empty = true;
-            while ((readChars = is.read(c)) != -1) {
-                empty = false;
-                for (int i = 0; i < readChars; ++i) {
-                    if (c[i] == '\n') {
-                        ++count;
-                    }
-                }
-            }
-            return (count == 0 && !empty) ? 1 : count;
-        }
-    }
-
+    /**
+     * draw the Statistics for the Single Player Mode
+     * @throws IOException
+     */
     public void paintSinglePlayerStatisticsFrame() throws IOException {
         this.setTitle("SnakeAI Revolution/Single Player Statistics");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(null);
-        this.setResizable(false);
-        this.setSize(screenWidth,screenHeight);
-        this.setVisible(true);
         labelContainer = new JLabel(SinglePlayerStatisticsBackground);
         labelContainer.setSize(new Dimension(screenWidth, screenHeight));
         this.add(changeStatisticsBoardButton);
@@ -344,7 +307,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
 
         int numberOfRows = 14;
         try {
-            BufferedReader csvReader = new BufferedReader(new FileReader("./src/Game/allHighscore.csv"));
+            BufferedReader csvReader = new BufferedReader(new FileReader("./logs/allHighscore.csv"));
             for (int rowCounter = 1 ; rowCounter <= numberOfRows && (row = csvReader.readLine()) != null ; rowCounter++) {
                 String[] data = row.split(",");
                 drawRow_Statistics(data, rowCounter);
@@ -353,9 +316,13 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
+    /**
+     * set the format of the Statistics for the Single Player Mode
+     * @param data
+     * @param rowCount
+     */
     private void drawRow_Statistics(String[] data, int rowCount) {
         for (int i = 0 ; i < data.length  ; i++) {
             JLabel l = new JLabel(data[i]);
@@ -367,14 +334,11 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         }
     }
 
-
+    /**
+     * draw the Statistics for the Bot vs Bot Mode
+     */
     private void paintBotVsBotStatisticsFrame() {
         this.setTitle("SnakeAI Revolution/Bot vs Bot Statistics");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLayout(null);
-        this.setResizable(false);
-        this.setSize(screenWidth,screenHeight);
-        this.setVisible(true);
         labelContainer = new JLabel(BotVsBotStatisticsBackground);
         labelContainer.setSize(new Dimension(screenWidth, screenHeight));
         this.add(changeStatisticsBoardButton);
@@ -402,6 +366,11 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         }
     }
 
+    /**
+     * set the format of the Statistics for the Bot vs Bot Mode
+     * @param data
+     * @param rowCount
+     */
     private void drawRow_BotStatistics(String[] data, int rowCount) {
         for (int i = 0 ; i < data.length  ; i++) {
             JLabel l = new JLabel(data[i]);
@@ -421,18 +390,12 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == playSingleButton) {
-            this.setVisible(false);
-            this.dispose();
+            try {GameMap map = new GameMap();}
+            catch (IOException ex) {throw new RuntimeException(ex);}
 
-            try {
-                new GameFrame();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
         } else if (e.getSource() == playBotButton) {
             this.setVisible(false);
             this.dispose();
-
             new Thread(new Runnable(){
                 @Override
                 public void run(){
@@ -444,6 +407,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                     }
                 }
             }).start();
+
         } else if (e.getSource() == settingsButton) {
             this.getContentPane().removeAll();
             this.validate();
@@ -488,9 +452,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-            } else {
-                this.paintBotVsBotStatisticsFrame();
-            }
+            } else this.paintBotVsBotStatisticsFrame();
 
         } else if (e.getSource() == quitgameButton) {
             int respone = JOptionPane.showConfirmDialog(null, "You are about to exit the Game. Are you sure?", "Exit Confirmation", JOptionPane.YES_NO_OPTION);
@@ -510,27 +472,23 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                     "▶ Project Link on Github:<br>" +
                     "<a href=\"https://github.com/minhnguyen1312/ProjectSnakeAI\">https://github.com/minhnguyen1312/ProjectSnakeAI</a>"), "About us", JOptionPane.INFORMATION_MESSAGE);
             //JOptionPane.showMessageDialog(null, "Snake Revolution\nversion 1.0.0\n\nAuthors:\nNguyen Phuoc Bao Minh\nNguyen Vu Doanh Khoa\nVu Hoang Tuan Anh\nBa Nguyen Quoc Anh", "About us", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if (e.getSource() == backButton) {
+
+        } else if (e.getSource() == backButton) {
             this.getContentPane().removeAll();
             this.validate();
             this.repaint();
-            this.paintStartScreen();
+            this.run();
 
         } else if (e.getSource() == changeStatisticsBoardButton) {
             if (nextStatistics.equals(statisticsBoard[0])) {
                 // switch to BotvsBot Mode
-                try {
-                    MultiplayerStat.run();
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
                 this.getContentPane().removeAll();
                 this.validate();
                 this.repaint();
                 this.paintBotVsBotStatisticsFrame();
                 nextStatistics = statisticsBoard[1];
                 changeStatisticsBoardButton.setText(nextStatistics);
+
             } else {
                 this.getContentPane().removeAll();
                 this.validate();
@@ -544,11 +502,5 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                 changeStatisticsBoardButton.setText(nextStatistics);
             }
         }
-
-    }
-
-    @Override
-    public void run() {
-        paintStartScreen();
     }
 }

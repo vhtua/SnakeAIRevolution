@@ -1,5 +1,6 @@
-package DefaultBotFrameWork;
+package defaultbotframework;
 
+import bot.Bot;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
@@ -24,12 +25,12 @@ public class BotLoader extends ClassLoader {
             // Load the target class using its binary name
             Class<?> loadedMyClass = classLoader.loadClass(classBinName);
             boolean isBot = Arrays.asList(loadedMyClass.getInterfaces()).contains(Bot.class);
-            if (isBot) {
-                System.out.println("Loaded bot.");
-            } else {
-                System.out.println("Did not match interface.");
-            }
-            System.out.println("Loaded class name: " + loadedMyClass.getName());
+//            if (isBot) {
+//                System.out.println("Loaded bot.");
+//            } else {
+//                System.out.println("Did not match interface.");
+//            }
+//            System.out.println("Loaded class name: " + loadedMyClass.getName());
 
             Class<? extends Bot> botClass = loadedMyClass.asSubclass(Bot.class);
             Constructor<? extends Bot> botClassCtor = botClass.getConstructor();

@@ -1,14 +1,16 @@
-package Game;
+package game;
 
 import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
+/**
+ * This class supports HTML format feature for the Game Credits
+ */
 public class MessageWithLink extends JEditorPane {
     private static final long serialVersionUID = 1L;
 

@@ -29,7 +29,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing.triggers;
+package gui.timingframework.org.jdesktop.animation.timing.triggers;
 
 /**
  * Timing events; TimingTriggers can be set to fire when an animator 

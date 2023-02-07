@@ -1,4 +1,4 @@
-package DefaultBotFrameWork;
+package defaultbotframework;
 //Graphical interface extended from Strygin's version by Truong Nguyen
 
 import java.awt.Color;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import Game.Config;
+import game.Config;
 
 /**
  * This class is responsible for the snakes canvas in GUI
@@ -42,7 +42,7 @@ public class SnakeCanvas extends JPanel {
 	 */
 	public SnakeCanvas(SnakeGame game) {
 		this.game = game;
-		java.net.URL imageURL = getClass().getResource("/./Skin/apple8bit.png");
+		java.net.URL imageURL = getClass().getResource("/./skin/apple8bit.png");
 		if (imageURL != null) {
 			Image appleImage = new ImageIcon(imageURL).getImage().getScaledInstance(CELL_SIZE - 10, CELL_SIZE - 10,
 					Image.SCALE_SMOOTH);

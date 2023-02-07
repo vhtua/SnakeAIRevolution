@@ -1,4 +1,6 @@
-package DefaultBotFrameWork;
+package defaultbotframework;
+
+import bot.Bot;
 
 /**
  * This class is responsible for running bots in a separate threads

@@ -29,14 +29,14 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing.interpolation;
+package gui.timingframework.org.jdesktop.animation.timing.interpolation;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 import java.util.Locale;
 
-import GUI.timingframework.org.jdesktop.animation.timing.Animator;
-import GUI.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter;
+import gui.timingframework.org.jdesktop.animation.timing.Animator;
+import gui.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter;
 
 /**
  * This class enables automating animation of object properties.

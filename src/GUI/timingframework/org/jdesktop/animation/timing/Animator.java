@@ -30,14 +30,14 @@
  */
 
 
-package GUI.timingframework.org.jdesktop.animation.timing;
+package gui.timingframework.org.jdesktop.animation.timing;
 
 import javax.swing.Timer;
 import java.awt.event.*;
 import java.util.ArrayList;
-import GUI.timingframework.org.jdesktop.animation.timing.interpolation.Interpolator;
-import GUI.timingframework.org.jdesktop.animation.timing.interpolation.LinearInterpolator;
-import GUI.timingframework.org.jdesktop.animation.timing.interpolation.PropertySetter;
+import gui.timingframework.org.jdesktop.animation.timing.interpolation.Interpolator;
+import gui.timingframework.org.jdesktop.animation.timing.interpolation.LinearInterpolator;
+import gui.timingframework.org.jdesktop.animation.timing.interpolation.PropertySetter;
 
 /**
  * This class controls animations.  Its constructors and various

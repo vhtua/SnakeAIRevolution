@@ -29,10 +29,9 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing.interpolation;
+package gui.timingframework.org.jdesktop.animation.timing.interpolation;
 
 import java.util.ArrayList;
-import GUI.timingframework.org.jdesktop.animation.timing.*;
 
 /**
  * Stores a list of times from 0 to 1 (the elapsed fraction of an animation

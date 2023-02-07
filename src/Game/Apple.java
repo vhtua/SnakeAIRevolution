@@ -1,10 +1,12 @@
-package Game;
+package game;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-
+/**
+ * This class implements the prey (apple) of the Single Player Mode
+ */
 public class Apple {
     private Coordinate appleCoor;
     private int width, height;
@@ -29,7 +31,7 @@ public class Apple {
         } catch (Exception ex){
             g.setColor(Color.RED);
             g.fillOval(appleCoor.x * width, appleCoor.y * height, width, height);
-            //ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
 
@@ -53,5 +55,4 @@ public class Apple {
         }
         return "Default Skin";
     }
-
 }

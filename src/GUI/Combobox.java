@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -11,11 +11,15 @@ import javax.swing.event.PopupMenuListener;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
-import GUI.timingframework.org.jdesktop.animation.timing.Animator;
-import GUI.timingframework.org.jdesktop.animation.timing.TimingTarget;
-import GUI.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter;
-import GUI.JFramework.ScrollBarCustom;
+import gui.timingframework.org.jdesktop.animation.timing.Animator;
+import gui.timingframework.org.jdesktop.animation.timing.TimingTarget;
+import gui.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter;
+import gui.JFramework.ScrollBarCustom;
 
+/**
+ * This class implements a better Combobox for the Game GUI
+ * @param <E>
+ */
 public class Combobox<E> extends JComboBox<E> implements ActionListener {
 
     public String getLabeText() {
@@ -258,57 +262,4 @@ public class Combobox<E> extends JComboBox<E> implements ActionListener {
             }
         }
     }
-
-    // testing purpose
-//    public static void main(String[] args) {
-//        JFrame frame = new JFrame("Testing Combobox");
-//        frame.setLocationRelativeTo(null);
-//        frame.setLayout(null);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setPreferredSize(new Dimension(600, 600));
-//        frame.setResizable(false);
-//
-//        //String[] options = {"item1", "item2", "item3", "item4", "item5", "item6"};
-//        Combobox<String> myComboBox = new Combobox<>();
-//        myComboBox.addItem("item2");
-//        myComboBox.addItem("item3");
-//        myComboBox.addItem("item4");
-//        myComboBox.addItem("item5");
-//        myComboBox.addItem("item6");
-//
-//        myComboBox.setPreferredSize(new Dimension(200, 40));
-//        //myButton.setBounds(50, 50, 100, 50);
-//
-//        frame.add(myComboBox);
-//        Insets insets = frame.getInsets();
-//        Dimension size = myComboBox.getPreferredSize();
-//        myComboBox.setBounds(25 + insets.left, 5 + insets.top, size.width, size.height);
-//        myComboBox.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println(myComboBox.getSelectedItem());
-//            }
-//        });
-//
-//        JLabel myLabelText = new JLabel();
-//        myLabelText.setBounds(25 + insets.left + 100, 5 + insets.top + 100, size.width, size.height);
-//        myLabelText.setText("Hello I'm a label");
-//        frame.add(myLabelText);
-//
-//        JButton myButton = new JButton("Check Combobox");
-//        myButton.setPreferredSize(new Dimension(200, 40));
-//        Dimension buttonSize = myButton.getPreferredSize();
-//        myButton.setBounds(25 + insets.left + 300, 5 + insets.top, buttonSize.width, buttonSize.height);
-//
-//        frame.add(myButton);
-//        myButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                myLabelText.setText((String) myComboBox.getSelectedItem());
-//            }
-//        });
-//
-//        frame.pack();
-//        frame.setVisible(true);
-//    }
 }

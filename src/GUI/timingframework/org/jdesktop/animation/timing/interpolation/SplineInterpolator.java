@@ -30,11 +30,10 @@
  */
 
 
-package GUI.timingframework.org.jdesktop.animation.timing.interpolation;
+package gui.timingframework.org.jdesktop.animation.timing.interpolation;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import GUI.timingframework.org.jdesktop.animation.timing.*;
 
 /**
  * This class interpolates fractional values using Bezier splines.  The anchor

@@ -1,4 +1,4 @@
-package GUI.swing.shadow;
+package gui.swing.shadow;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;

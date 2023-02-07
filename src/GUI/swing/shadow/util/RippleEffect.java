@@ -1,7 +1,7 @@
-package GUI.swing.shadow.util;
+package gui.swing.shadow.util;
 
-import GUI.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter;
-import GUI.timingframework.org.jdesktop.animation.timing.Animator;
+import gui.timingframework.org.jdesktop.animation.timing.TimingTargetAdapter;
+import gui.timingframework.org.jdesktop.animation.timing.Animator;
 
 import javax.swing.*;
 import java.awt.*;

@@ -29,7 +29,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package GUI.timingframework.org.jdesktop.animation.timing;
+package gui.timingframework.org.jdesktop.animation.timing;
 
 /**
  * This interface is implemented by any object wishing to receive events from a
