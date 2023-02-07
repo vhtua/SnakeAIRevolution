@@ -1,5 +1,5 @@
 gameDifficulty
-Easy
+Hard
 boardColor
 black
 snakeColor

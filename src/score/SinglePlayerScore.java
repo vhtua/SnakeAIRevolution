@@ -19,12 +19,16 @@ class SinglePlayerScore implements Comparable<SinglePlayerScore> {
 
     @Override
     public int compareTo(SinglePlayerScore other) {
-        if (this.score == other.score && this.difficulty.difficultyOrdinal > other.difficulty.difficultyOrdinal) {
-            return -1;
+        if (this.score == other.score) {
+            if (this.difficulty.difficultyOrdinal > other.difficulty.difficultyOrdinal) {
+                return -1;
+            } else {
+                return 0;
+            }
         } else if (this.score > other.score) {
             return -1;
         }
-        return 0;
+        return 1;
     }
 
     @Override

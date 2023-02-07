@@ -2,14 +2,13 @@ package score;
 
 import game.Config;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class SinglePlayerCompare {
-
+//    Path path = FileSystems.getDefault().getPath("logs", "access.log");
     public static final String READ_PATH = "./logs/allScoreLog.csv";
     public static final String WRITE_PATH = "./logs/allHighscore.csv";
 
@@ -20,7 +19,11 @@ public class SinglePlayerCompare {
         readAllLinesFromFile(READ_PATH);
         ArrayList<SinglePlayerScore> SnakeList = convertListToSnake(StringList);
         writeToHighScore(SnakeList);
+//        System.out.println(new File("abc.txt").getAbsoluteFile().getParent());
+//        System.out.println(SinglePlayerCompare.class.getPackage());
+//        System.out
     }
+
 
     private static void writeToHighScore(ArrayList<SinglePlayerScore> snakeList) throws IOException {
         FileWriter results_fw;
