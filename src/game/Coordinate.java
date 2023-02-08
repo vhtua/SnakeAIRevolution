@@ -1,4 +1,4 @@
-package game1;
+package game;
 
 /**
  * This class implements 2D xy-Coordinates for the Snake of the Single Player Mode

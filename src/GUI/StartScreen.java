@@ -1,7 +1,7 @@
 package gui;
 
 import defaultbotframework.SnakesUIMain;
-import game1.*;
+import game.*;
 import score.MultiplayerCompare;
 import score.SinglePlayerCompare;
 

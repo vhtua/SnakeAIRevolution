@@ -1,6 +1,6 @@
 package score;
 
-import game1.Config;
+import game.Config;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
