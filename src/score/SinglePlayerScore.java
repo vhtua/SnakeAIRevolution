@@ -1,6 +1,6 @@
 package score;
 
-import game1.Config;
+import game.Config;
 
 class SinglePlayerScore implements Comparable<SinglePlayerScore> {
 
