@@ -1,8 +1,8 @@
 package bot;
 
-import defaultbotframework1.Coordinate;
-import defaultbotframework1.Direction;
-import defaultbotframework1.Snake;
+import defaultbotframework.Coordinate;
+import defaultbotframework.Direction;
+import defaultbotframework.Snake;
 
 import java.util.Arrays;
 import java.util.Iterator;
