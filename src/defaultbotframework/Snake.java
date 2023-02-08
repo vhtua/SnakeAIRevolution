@@ -1,4 +1,4 @@
-package defaultbotframework1;
+package defaultbotframework;
 
 import java.util.Deque;
 import java.util.HashSet;

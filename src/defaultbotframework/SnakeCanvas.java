@@ -1,4 +1,4 @@
-package defaultbotframework1;
+package defaultbotframework;
 //Graphical interface extended from Strygin's version by Truong Nguyen
 
 import java.awt.Color;
