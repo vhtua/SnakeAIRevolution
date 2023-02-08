@@ -1,4 +1,4 @@
-package defaultbotframework;
+package defaultbotframework1;
 
 /**
  * This enum class implements a direction vector

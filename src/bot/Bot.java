@@ -1,8 +1,8 @@
 package bot;
 
-import defaultbotframework.Coordinate;
-import defaultbotframework.Direction;
-import defaultbotframework.Snake;
+import defaultbotframework1.Coordinate;
+import defaultbotframework1.Direction;
+import defaultbotframework1.Snake;
 
 /**
  * This interface provides functions that should be implemented

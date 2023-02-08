@@ -1,4 +1,4 @@
-package defaultbotframework;
+package defaultbotframework1;
 
 import javax.swing.*;
 import java.awt.*;
