@@ -1,7 +1,7 @@
 package defaultbotframework;
 
 import bot.Bot;
-import game.Config;
+import game1.Config;
 
 import java.io.File;
 import java.io.FileWriter;

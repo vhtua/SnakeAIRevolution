@@ -1,10 +1,8 @@
 package score;
 
-import game.Config;
+import game1.Config;
 
 import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class SinglePlayerCompare {

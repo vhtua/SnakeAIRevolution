@@ -1,4 +1,4 @@
-package game;
+package game1;
 
 /**
  * This enumeration specifies the particular actions for the Snake based on its 2D xy-Coordinate

@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import game.Config;
+import game1.Config;
 
 /**
  * This class is responsible for the snakes canvas in GUI
