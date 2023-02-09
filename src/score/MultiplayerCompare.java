@@ -12,13 +12,11 @@ import java.util.ArrayList;
  * This class creates a table of records of all the tournament among all bots
  */
 public class MultiplayerCompare {
-
     public static final String LOG_PATH = "./logs/total.txt";
     public static final String RECORDTABLE = "./logs/multiscoreboard.csv";
     public static boolean append = false;
     public static ArrayList<String> aList = new ArrayList<String>();
     public static String[][] TableRecord = new String[Config.botNameArr.length][Config.botNameArr.length];
-
 
     public static void execution() throws Exception {
         readAllLinesFromFile(LOG_PATH);
@@ -31,7 +29,10 @@ public class MultiplayerCompare {
         writeAllToHomeAwayRecordTable(RECORDTABLE, append);
     }
 
-
+    /**
+     * fill each cell of the table record with the corresponding scores that gets from the parameter
+     * @param eachRecord
+     */
     private static void addRecordtoTableRecord(MultiplayerScore eachRecord) {
         String bot1 = eachRecord.getBot1();
         int bot1_pos = posBotinTable(bot1);
@@ -54,6 +55,10 @@ public class MultiplayerCompare {
         TableRecord[bot1_pos][bot2_pos] = newHomePts + " - " + newAwayPts;
     }
 
+    /**
+     * generate initial table record filled with all scores 0-0
+     * @param tableRecord
+     */
     private static void generateTableRecord(String[][] tableRecord) {
         for (int i = 0 ; i < Config.botNameArr.length ; i++) {
             for (int j = 0 ; j < Config.botNameArr.length ; j++) {
@@ -62,6 +67,11 @@ public class MultiplayerCompare {
         }
     }
 
+    /**
+     * get score for each round
+     * @param aList
+     * @return
+     */
     private static ArrayList<MultiplayerScore> convertListToEachRecord(ArrayList<String> aList) {
         ArrayList<MultiplayerScore> homeAwayRecord = new ArrayList<MultiplayerScore>();
         for(String record : aList) {
@@ -77,9 +87,13 @@ public class MultiplayerCompare {
         return homeAwayRecord;
     }
 
-
+    /**
+     * read all data lines from a file
+     * @param path
+     * @return
+     * @throws IOException
+     */
     private static ArrayList<String> readAllLinesFromFile(String path) throws IOException {
-
         FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = null;
@@ -91,8 +105,13 @@ public class MultiplayerCompare {
         return aList;
     }
 
+    /**
+     * create the final table of record and filled
+     * @param path
+     * @param appendable
+     * @throws IOException
+     */
     private static void writeAllToHomeAwayRecordTable(String path, boolean appendable) throws IOException {
-
         String inputStr = "HOME || AWAY";
         FileWriter results_fw;
         results_fw = new FileWriter(path, appendable);
@@ -115,6 +134,11 @@ public class MultiplayerCompare {
         results_fw.close();
     }
 
+    /**
+     * get the position of the bot name on the table record
+     * @param botName
+     * @return
+     */
     private static int posBotinTable (String botName) {
         for (int pos = 0 ; pos < Config.botNameArr.length ; pos++) {
             if (botName.equals(Config.botNameArr[pos])) {
@@ -123,6 +147,4 @@ public class MultiplayerCompare {
         }
         return -1;
     }
-
-
 }

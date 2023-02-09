@@ -5,11 +5,12 @@ import game.Config;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * This class create a record of Single Player Mode scores and sort them in order
+ */
 public class SinglePlayerCompare {
-//    Path path = FileSystems.getDefault().getPath("logs", "access.log");
     public static final String READ_PATH = "./logs/allScoreLog.csv";
     public static final String WRITE_PATH = "./logs/allHighscore.csv";
-
     public static boolean append = false;
     public static ArrayList<String> StringList = new ArrayList<String>();
 
@@ -17,12 +18,13 @@ public class SinglePlayerCompare {
         readAllLinesFromFile(READ_PATH);
         ArrayList<SinglePlayerScore> SnakeList = convertListToSnake(StringList);
         writeToHighScore(SnakeList);
-//        System.out.println(new File("abc.txt").getAbsoluteFile().getParent());
-//        System.out.println(SinglePlayerCompare.class.getPackage());
-//        System.out
     }
 
-
+    /**
+     * write the final sorting scores to a file
+     * @param snakeList
+     * @throws IOException
+     */
     private static void writeToHighScore(ArrayList<SinglePlayerScore> snakeList) throws IOException {
         FileWriter results_fw;
         results_fw = new FileWriter(WRITE_PATH, append);
@@ -34,6 +36,11 @@ public class SinglePlayerCompare {
         results_fw.close();
     }
 
+    /**
+     * sorting all the scores
+     * @param aList
+     * @return
+     */
     private static ArrayList<SinglePlayerScore> convertListToSnake(ArrayList<String> aList) {
         ArrayList<SinglePlayerScore> snake = new ArrayList<>();
         aList.remove(0);
@@ -51,9 +58,13 @@ public class SinglePlayerCompare {
         return snake;
     }
 
-
+    /**
+     * read the csv file line by line
+     * @param path
+     * @return
+     * @throws IOException
+     */
     public static ArrayList<String> readAllLinesFromFile(String path) throws IOException {
-
         FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = null;
@@ -63,7 +74,5 @@ public class SinglePlayerCompare {
         bufferedReader.close();
 
         return StringList;
-
     }
-
 }
