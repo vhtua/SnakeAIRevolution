@@ -1,16 +1,16 @@
 gameDifficulty
-Easy
+Hard
 boardColor
 black
 snakeColor
 red
 preyType
-apple
+banana
 bot01
 anhsBot
-lime green
+sky blue
 bot02
 a_zhuchkov
-orange
+white
 numberOfTournaments
 5

@@ -10,22 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1f0c5b0-29d5-491f-9904-45b70c4fb221" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/SnakeAIRevolution.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeAIRevolution.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SnakeAIRevolution.iws" beforeDir="false" afterPath="$PROJECT_DIR$/SnakeAIRevolution.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/allHighScore.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/allHighScore.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/allScoreLog.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/allScoreLog.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/Direction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/GameMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/GameMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/Snake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/SnakeAbstract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/SnakeAbstract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/iteration_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/iteration_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/iteration_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/iteration_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/iteration_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/iteration_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/iteration_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/iteration_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/iteration_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/iteration_4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/multiscoreboard.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/multiscoreboard.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/total.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/total.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/SnakeAIRevolution_jar/SnakeAIRevolution.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/gameSettings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeAIRevolution/game/gameSettings.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SnakeAIRevolution/score/SinglePlayerCompare.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeAIRevolution/score/SinglePlayerCompare.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SnakeAIRevolution/score/SinglePlayerScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SnakeAIRevolution/score/SinglePlayerScore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/GameMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/GameMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Snake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/SnakeAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/SnakeAbstract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/StartScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/StartScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/score/SinglePlayerCompare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/score/SinglePlayerCompare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gameSettings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gameSettings.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,17 +43,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/GitHub/OnlySnake/SnakeAIRevolution/src&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "C:/Users/ADMIN/Documents/GitHub/OnlySnake/SnakeAIRevolution/src",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ADMIN\Documents\GitHub\OnlySnake\SnakeAIRevolution\src" />

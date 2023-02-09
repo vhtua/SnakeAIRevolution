@@ -1,4 +1,5 @@
 Player,13,Hard,banana,24/01/23 07:59:38
+Player,13,Easy,apple,09/02/23 14:19:42
 Player,11,Hard,apple,05/02/23 16:05:52
 Player,8,Hard,apple,07/02/23 15:32:04
 Player,7,Hard,banana,24/01/23 07:58:43
@@ -23,6 +24,7 @@ Player,1,Easy,apple,04/02/23 01:40:49
 Player,1,Easy,mouse,05/02/23 18:10:05
 Player,1,Easy,mouse,05/02/23 18:29:34
 Player,1,Easy,mouse,05/02/23 18:31:53
+Player,1,Easy,banana,09/02/23 14:24:53
 Player,0,Ultra,mouse,24/01/23 07:59:53
 Player,0,Ultra,mouse,24/01/23 07:59:59
 Player,0,Ultra,mouse,24/01/23 08:00:06
@@ -37,6 +39,7 @@ Player,0,Easy,apple,05/02/23 17:32:21
 Player,0,Easy,mouse,05/02/23 17:47:59
 Player,0,Easy,mouse,05/02/23 17:48:16
 Player,0,Easy,mouse,05/02/23 17:51:03
+Player,0,Hard,banana,09/02/23 14:25:36
 Player,0,Easy,mouse,05/02/23 17:52:21
 Player,0,Easy,mouse,05/02/23 18:15:19
 Player,0,Easy,mouse,05/02/23 18:16:25
@@ -56,3 +59,4 @@ Player,0,Easy,mouse,05/02/23 18:34:55
 Player,0,Easy,mouse,05/02/23 18:35:10
 Player,0,Easy,apple,07/02/23 17:07:35
 Player,0,Easy,apple,07/02/23 17:15:45
+Player,0,Easy,apple,09/02/23 03:38:02

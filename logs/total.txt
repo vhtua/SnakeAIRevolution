@@ -25,3 +25,4 @@ anhsBot vs. a_zhuchkov : 1 - 0
 anhsBot vs. a_zhuchkov : 1 - 0
 a_zhuchkov vs. a_zhuchkov : 0 - 1
 anhsBot vs. a_zhuchkov : 3 - 2
+anhsBot vs. a_zhuchkov : 5 - 0
