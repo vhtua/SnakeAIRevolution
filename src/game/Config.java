@@ -63,7 +63,7 @@ public class Config {
 
     /**
      * initialize all the Game Configs
-     * @throws IOException
+     * @throws IOException can not read the config file
      */
     public void loadAllConfig() throws IOException {
         this.loadPreySkin();
@@ -74,7 +74,7 @@ public class Config {
 
     /**
      * load the skin for the prey in the Single Player Mode
-     * @throws IOException
+     * @throws IOException can not read the config file
      */
     public void loadPreySkin() throws IOException {
         // default skin = apple
@@ -91,7 +91,7 @@ public class Config {
 
     /**
      * load the game difficulties in Single Player Mode
-     * @throws IOException
+     * @throws IOException can not read the config file
      */
     public void loadGameDifficulty() throws IOException {
         GameDifficulty gameModeInput = GameDifficulty.valueOf(Files.readAllLines(configPath).get(1));
@@ -124,7 +124,7 @@ public class Config {
 
     /**
      * load the Snake Color of the Single Player Mode
-     * @throws IOException
+     * @throws IOException can not read the config file
      */
     public void loadSnakeColor() throws IOException {
         String snakeColorInput = Files.readAllLines(configPath).get(5);
@@ -141,7 +141,7 @@ public class Config {
 
     /**
      * load the Color of the Board Border in the Single Player Mode
-     * @throws IOException
+     * @throws IOException can not read the config file
      */
     public void loadBoardColor() throws IOException {
         String boardColorInput = Files.readAllLines(configPath).get(3);
@@ -157,7 +157,7 @@ public class Config {
 
     /**
      * load all configs for the BotvsBot Mode (the names and the color of the 2 bots)
-     * @throws IOException
+     * @throws IOException can not read the config file
      */
     public void loadBotvsBotMode() throws IOException {
         String bot01ColorInput = Files.readAllLines(configPath).get(10);

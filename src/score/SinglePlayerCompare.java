@@ -14,6 +14,10 @@ public class SinglePlayerCompare {
     public static boolean append = false;
     public static ArrayList<String> StringList = new ArrayList<String>();
 
+    /**
+     *
+     * @throws Exception can not read the file
+     */
     public static void execution() throws Exception {
         readAllLinesFromFile(READ_PATH);
         ArrayList<SinglePlayerScore> SnakeList = convertListToSnake(StringList);

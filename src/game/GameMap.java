@@ -15,11 +15,11 @@ import java.util.List;
 import java.util.Random;
 
 public class GameMap extends JPanel implements ActionListener, KeyListener {
-    private JFrame frame = new JFrame();
+    private final JFrame frame = new JFrame();
 
     // Default Settings for the Snake
-    private Snake classic = new Snake(Config.boundSquare,Config.boundSquare);
-    private SnakeAbstract aSnake;
+    private final Snake classic = new Snake(Config.boundSquare,Config.boundSquare);
+    private final SnakeAbstract aSnake;
 
     // Apple attributes
     private Apple apple;
@@ -27,21 +27,20 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
     private boolean appleAppear;
     private int appleTimer; //moves
     private Timer timer;
-    private Random r;
+    private final Random r;
 
     // Game stat
     private Integer score;
     private Integer bestscore = 0;
-    private String playerName;
 
     // Game Config
-    private Config gameConfig;
+    private final Config gameConfig;
 
     // ============================= METHODS ======================================
 
     /**
      * start creating the Map and the Snake
-     * @throws IOException
+     * @throws IOException can not read the config file
      */
     public GameMap() throws IOException {
         // init the game Config
@@ -100,7 +99,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
 
     /**
      * spawn new Apple position after it is eaten by a snake or after an amount of time
-     * @param g
+     * @param g graphic
      */
     public void newApple(Graphics g) {
         if (!appleAppear || appleTimer == 1) {
@@ -121,7 +120,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
 
     /**
      * return the proper position for the apple to respawn (on the bound of the game ground and not on the snake)
-     * @return
+     * @return new coordinate for the apple
      */
     public int[] findNonOccupiedAppleSpace() {
         int[] coor = new int[2];
@@ -129,7 +128,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
             boolean newAppleCoor = true;
             int xApple = r.nextInt(Config.WIDTH / appleSize);       // bound for xApple
             int yApple = r.nextInt(Config.HEIGHT / appleSize);      // bound for yApple
-            int n = Config.HEIGHT/Config.SQUARE_SIZE - Config.boundSquare;
+            //int n = Config.HEIGHT/Config.SQUARE_SIZE - Config.boundSquare;
             for (int i = 0; i < aSnake.getSnakeList().size() ; i++) {
                 if (xApple == aSnake.getSnakeList().get(i).getxCoor() &&
                         yApple == aSnake.getSnakeList().get(i).getyCoor()) {
@@ -154,8 +153,8 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
 
     /**
      * check the status of the snake consecutively while the gameplay is running
-     * @param snake
-     * @param g
+     * @param snake     the input snake
+     * @param g         graphics
      */
     public void checkSnake(SnakeAbstract snake, Graphics g) {
         if (!snake.isAliveStatus()) {
@@ -205,8 +204,8 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
 
     /**
      * check whether the Snake ate the apple at the current time or not
-     * @param snake
-     * @return
+     * @param snake the input snake
+     * @return true if the snake ate the apple, otherwise false
      */
     public boolean snakeEatApple(SnakeAbstract snake) {
         int snakeSize = snake.getSnakeList().size();
@@ -216,7 +215,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
 
     /**
      * check whether collisions happen between the Snake and the boundaries of the gameplay
-     * @param snake
+     * @param snake the snake
      */
     public void snakeCollidesWall (SnakeAbstract snake) {
         int listSize = snake.getSnakeList().size();
@@ -230,7 +229,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
 
     /**
      * check whether the Snake collides with its own body
-     * @param aSnake
+     * @param aSnake the snake
      */
     public void snakeCollidesBody(SnakeAbstract aSnake) {
         Snake s = aSnake.getSnakeList().get(aSnake.getSnakeList().size() - 1);
@@ -246,7 +245,7 @@ public class GameMap extends JPanel implements ActionListener, KeyListener {
 
     /**
      * paint the game board component, game score and instruction texts
-     * @param g
+     * @param g graphic
      */
     public void paint(Graphics g) {
         g.clearRect(0, 0, Config.WIDTH, Config.HEIGHT);

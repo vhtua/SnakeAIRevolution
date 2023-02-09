@@ -10,19 +10,19 @@ import java.util.List;
  * This class is responsible for the whole body and status of the snake
  */
 public class SnakeAbstract implements KeyListener {
-    private List<Snake> snakeList;
-    private Color snakeColor;
+    private final List<Snake> snakeList;
+    private final Color snakeColor;
     private Direction snakeDir;
     private boolean aliveStatus;
 
     /**
      * initialize the Snake and its Body, Color, Status, position
-     * @param snake
-     * @param snakeDir
-     * @param snakeColor
+     * @param snake         input snake
+     * @param snakeDir      current direction of the snake
+     * @param snakeColor    current snake body color
      */
     public SnakeAbstract(Snake snake, Direction snakeDir, Color snakeColor) {
-        List<Snake> snakeList = new ArrayList<Snake>();
+        List<Snake> snakeList = new ArrayList<>();
         snakeList.add(snake);
         this.snakeList = snakeList;
         this.snakeDir = snakeDir;
@@ -35,10 +35,10 @@ public class SnakeAbstract implements KeyListener {
 
     /**
      * get coordinate of the Snake's Head
-     * @param xyCoor
-     * @param target
-     * @param currentDirection
-     * @return
+     * @param xyCoor            current coordinate of the snake head
+     * @param target            the apple
+     * @param currentDirection  the direction that the snake wants to change
+     * @return                  new coordinate for the snake head
      */
     public Coordinate getHeadCoor(Coordinate xyCoor, Apple target, Direction currentDirection) {
         return xyCoor.moveTo(currentDirection);
@@ -66,8 +66,8 @@ public class SnakeAbstract implements KeyListener {
     }
 
     /**
-     *
-     * @param snake
+     * increase the size of the snake
+     * @param snake the current snake
      */
     public void addTail(Snake snake) {
         this.snakeList.add(snake);
@@ -83,25 +83,25 @@ public class SnakeAbstract implements KeyListener {
 
     /**
      * get the current direction of the Snake
-     * @param snakeDir
+     * @param snakeDir the current direction of the snake
      */
     public void setSnakeDir(Direction snakeDir) {this.snakeDir = snakeDir;}
 
     /**
      * get the status of the Snake
-     * @return
+     * @return the current status of the snake
      */
     public boolean isAliveStatus() {return aliveStatus;}
 
     /**
      * set the status for the Snake
-     * @param aliveStatus
+     * @param aliveStatus the current status of the snake
      */
     public void setAliveStatus(boolean aliveStatus) {this.aliveStatus = aliveStatus;}
 
     /**
      * increase the size of the Snake if it eats the Apple
-     * @param target
+     * @param target the apple
      */
     public void movement(Apple target) {
         Snake sHead = snakeList.get(snakeList.size() - 1);
@@ -114,11 +114,11 @@ public class SnakeAbstract implements KeyListener {
 
     /**
      * paint the Snake on the frame
-     * @param g
+     * @param g graphics
      */
     public void buildSnake(Graphics g) {
-        for (int i = 0; i < snakeList.size(); i++) {
-            snakeList.get(i).draw(g, this.snakeColor);// build body
+        for (Snake snake : snakeList) {
+            snake.draw(g, this.snakeColor);// build body
         }
         // build head
         snakeList.get(snakeList.size()-1).drawHead(g, Color.WHITE);

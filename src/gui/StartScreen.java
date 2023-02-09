@@ -67,7 +67,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
 
     /**
      * centre the frame on the window screen
-     * @param frame
+     * @param frame     the window frame
      */
     public static void centreWindow(Window frame) {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
