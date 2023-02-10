@@ -206,6 +206,9 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
         infoButton.setBackground(Color.black);
         infoButton.addActionListener(this);
 
+
+
+        System.out.println(Apple.class.getProtectionDomain().getCodeSource().getLocation().getPath());
         SinglePlayerCompare.execution();
         MultiplayerCompare.execution();
     }
@@ -307,7 +310,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
 
         int numberOfRows = 14;
         try {
-            BufferedReader csvReader = new BufferedReader(new FileReader("./logs/allHighscore.csv"));
+            BufferedReader csvReader = new BufferedReader(new FileReader(String.format("%s\\allHighScore.csv", "logs")));
             for (int rowCounter = 1 ; rowCounter <= numberOfRows && (row = csvReader.readLine()) != null ; rowCounter++) {
                 String[] data = row.split(",");
                 drawRow_Statistics(data, rowCounter);
@@ -416,7 +419,7 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
             
         } else if (e.getSource() == applySettingChanges) {
             try {
-                FileWriter myWriter = new FileWriter("./src/Game/gameSettings.txt");
+                FileWriter myWriter = new FileWriter(String.format("%s\\gameSettings.txt","logs"), false);
                 myWriter.write("gameDifficulty\n");
                 myWriter.write(gameDifficulty.getSelectedItem() + "\n");
                 myWriter.write("boardColor\n");
@@ -490,6 +493,11 @@ public class StartScreen extends JFrame implements ActionListener, Runnable {
                 changeStatisticsBoardButton.setText(nextStatistics);
 
             } else {
+//                try {
+//                    SinglePlayerCompare.execution();
+//                } catch (Exception ex) {
+//                    throw new RuntimeException(ex);
+//                }
                 this.getContentPane().removeAll();
                 this.validate();
                 this.repaint();

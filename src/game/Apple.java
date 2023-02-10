@@ -26,7 +26,16 @@ public class Apple {
         try {
             mySkin = new Config();
             mySkin.loadPreySkin();
-            BufferedImage img = ImageIO.read(mySkin.SKIN);
+            BufferedImage img = new BufferedImage(
+                    mySkin.SKIN.getIconWidth(),
+                    mySkin.SKIN.getIconHeight(),
+                    BufferedImage.TYPE_INT_RGB);
+
+//            BufferedImage img2 = ImageIO.read(mySkin.SKIN);
+            Graphics gg = img.createGraphics();
+// paint the Icon to the BufferedImage.
+            mySkin.SKIN.paintIcon(null, gg, 0,0);
+            gg.dispose();
             g.drawImage(img, appleCoor.x * width, appleCoor.y * height, width, height, null);
         } catch (Exception ex){
             g.setColor(Color.RED);
@@ -44,13 +53,13 @@ public class Apple {
     }
 
     public String getSkin() {
-        if (mySkin.SKIN.equals(Config.APPLE_SKIN)) {
+        if (mySkin.SKIN.equals(mySkin.APPLE_SKIN)) {
             return "apple";
-        } else if (mySkin.SKIN.equals(Config.BANANA_SKIN)) {
+        } else if (mySkin.SKIN.equals(mySkin.BANANA_SKIN)) {
             return "banana";
-        } else if (mySkin.SKIN.equals(Config.CHERRY_SKIN)) {
+        } else if (mySkin.SKIN.equals(mySkin.CHERRY_SKIN)) {
             return "cherry";
-        } else if (mySkin.SKIN.equals(Config.MOUSE_SKIN)) {
+        } else if (mySkin.SKIN.equals(mySkin.MOUSE_SKIN)) {
             return "mouse";
         }
         return "Default Skin";

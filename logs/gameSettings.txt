@@ -1,13 +1,13 @@
 gameDifficulty
-Hard
+Easy
 boardColor
 black
 snakeColor
 red
 preyType
-banana
+apple
 bot01
-anhsBot
+a_zhuchkov
 sky blue
 bot02
 a_zhuchkov

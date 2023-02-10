@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class SnakesUIMain {
 
     private static final String LOG_DIRECTORY_PATH = "logs";
+    private static final Path logPath = Paths.get("allScoreLog.csv");
     private static Config gameConfig;
     private static FileWriter results_fw;
     private static int[][] total_results_table;
@@ -61,7 +64,7 @@ public class SnakesUIMain {
      */
     public static void start_tournament_n_times(int n, ArrayList<Class<? extends Bot>> bots) throws IOException, InterruptedException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         total_results_table = new int[bots.size() + 1][bots.size() + 1];
-        File dir = new File(LOG_DIRECTORY_PATH);
+        File dir = new File(logPath.toUri());
         if (!dir.exists() && !dir.mkdirs()) {
             System.err.println("Cannot create log directory.");
         }

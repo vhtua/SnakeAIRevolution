@@ -1,32 +1,35 @@
 package score;
 
+import game.Apple;
 import game.Config;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
  * This class creates a table of records of all the tournament among all bots
  */
 public class MultiplayerCompare {
-    public static final String LOG_PATH = "./logs/total.txt";
-    public static final String RECORDTABLE = "./logs/multiscoreboard.csv";
+//    public static final String LOG_PATH = "logs/total.txt";
+//    public static final String RECORDTABLE = "logs/multiscoreboard.csv";
+    public static final String LOG_PATH = "logs";
+    public static final String RECORDTABLE = "logs";
     public static boolean append = false;
     public static ArrayList<String> aList = new ArrayList<String>();
     public static String[][] TableRecord = new String[Config.botNameArr.length][Config.botNameArr.length];
+    public static final File dir = new File(LOG_PATH);
 
     public static void execution() throws Exception {
-        readAllLinesFromFile(LOG_PATH);
+        FileWriter fileWriter = new FileWriter(String.format("%s\\total.txt",dir), true);
+
+        readAllLinesFromFile();
         generateTableRecord(TableRecord);
 
         ArrayList<MultiplayerScore> everyRecord = convertListToEachRecord(aList);
         for (MultiplayerScore eachRecord : everyRecord) {
             addRecordtoTableRecord(eachRecord);
         }
-        writeAllToHomeAwayRecordTable(RECORDTABLE, append);
+        writeAllToHomeAwayRecordTable(append);
     }
 
     /**
@@ -89,12 +92,12 @@ public class MultiplayerCompare {
 
     /**
      * read all data lines from a file
-     * @param path
+     *
      * @return
      * @throws IOException
      */
-    private static ArrayList<String> readAllLinesFromFile(String path) throws IOException {
-        FileReader fileReader = new FileReader(path);
+    private static ArrayList<String> readAllLinesFromFile() throws IOException {
+        FileReader fileReader = new FileReader(String.format("%s\\total.txt", dir));
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = null;
         while( (line = bufferedReader.readLine()) != null){
@@ -107,14 +110,14 @@ public class MultiplayerCompare {
 
     /**
      * create the final table of record and filled
-     * @param path
+     *
      * @param appendable
      * @throws IOException
      */
-    private static void writeAllToHomeAwayRecordTable(String path, boolean appendable) throws IOException {
+    private static void writeAllToHomeAwayRecordTable( boolean appendable) throws IOException {
         String inputStr = "HOME || AWAY";
         FileWriter results_fw;
-        results_fw = new FileWriter(path, appendable);
+        results_fw = new FileWriter(String.format("%s\\multiscoreboard.csv", dir), appendable);
 
         for(String botAway : Config.botNameArr){
             inputStr += "," + botAway;

@@ -1,10 +1,11 @@
 package game;
+import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 /**
  * This class implements all the Configurations for the Game
@@ -15,17 +16,19 @@ public class Config {
     public static final int WIDTH = 750, HEIGHT = 750;
     public static final int SQUARE_SIZE = 30;
     public static final int boundSquare = 2;
-    public static final Color BACKGROUND = Color.DARK_GRAY;
+    public static final Color BACKGROUND = Color.BLACK;
     public static boolean moveAtleastASpace = false;
     public static Font SCORE_FONT = new Font("Comic Sans", Font.PLAIN, 24);
-    public Path configPath = Paths.get("./src/Game/gameSettings.txt");
+    private static final String LOG_DIRECTORY_PATH = "logs";
+    public Path configPath = Paths.get("logs\\gameSettings.txt");
 
     // Prey Type
-    public static File APPLE_SKIN = new File("./src/skin/apple8bit.png");
-    public static File CHERRY_SKIN = new File("./src/skin/cherry.png");
-    public static File BANANA_SKIN = new File("./src/skin/banana.png");
-    public static File MOUSE_SKIN = new File("./src/skin/mouse.png");
-    public File SKIN;
+    public ImageIcon APPLE_SKIN = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/skin/apple8bit.png")));
+
+    public ImageIcon CHERRY_SKIN = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/skin/cherry.png")));
+    public ImageIcon BANANA_SKIN = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/skin/banana.png")));
+    public ImageIcon MOUSE_SKIN = new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/skin/mouse.png")));
+    public ImageIcon SKIN;
     public int DELAY;
     public int appleTimer;
 
@@ -61,6 +64,14 @@ public class Config {
 
     // ============================= METHODS ======================================
 
+    static {
+        try {
+            initialSetting();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * initialize all the Game Configs
      * @throws IOException can not read the config file
@@ -77,9 +88,33 @@ public class Config {
      * @throws IOException can not read the config file
      */
     public void loadPreySkin() throws IOException {
+//        java.net.URL imageURL = getClass().getResource("/skin/apple8bit.png");
+//        if (imageURL != null) {
+//            Image appleImage = new ImageIcon(imageURL).getImage().getScaledInstance(SQUARE_SIZE - 10, SQUARE_SIZE - 10,
+//                    Image.SCALE_SMOOTH);
+//            APPLE_SKIN = new ImageIcon(appleImage);
+//        }
+//
+//        java.net.URL imageURL2 = getClass().getResource("/skin/mouse.png");
+//        if (imageURL2 != null) {
+//            Image mouseImage = new ImageIcon(imageURL2).getImage().getScaledInstance(SQUARE_SIZE - 10, SQUARE_SIZE - 10,
+//                    Image.SCALE_SMOOTH);
+//            MOUSE_SKIN = new ImageIcon(mouseImage);
+//        }
+
+
         // default skin = apple
-        SKIN = new File("./src/Game/skin/apple8bit.png");
+        SKIN = APPLE_SKIN;
         String skinInput = Files.readAllLines(configPath).get(7);
+
+//        FileReader fileReader = new FileReader(String.format("%s\\gameSettings.txt", "logs"));
+//        BufferedReader bufferedReader = new BufferedReader(fileReader);
+//        String line = null;
+//            for (int i = 0; i < 7; i++) {
+//                bufferedReader.readLine();
+//            }
+//            String extractedLine = bufferedReader.readLine();
+//            System.out.println(extractedLine);
 
         switch (skinInput) {
             case "apple"    -> SKIN = APPLE_SKIN;
@@ -96,6 +131,7 @@ public class Config {
     public void loadGameDifficulty() throws IOException {
         GameDifficulty gameModeInput = GameDifficulty.valueOf(Files.readAllLines(configPath).get(1));
         this.gameDifficulty = gameModeInput;
+
 
         switch (gameModeInput) {
             case Easy -> {
@@ -147,7 +183,7 @@ public class Config {
         String boardColorInput = Files.readAllLines(configPath).get(3);
 
         switch (boardColorInput) {
-            case "black"        -> this.boardColor = Color.BLACK;
+            case "black"        -> this.boardColor = new Color(40,40,40);
             case "gray"         -> this.boardColor = Color.GRAY;
             case "violet"       -> this.boardColor = new Color(127, 0, 255);
             case "brown"        -> this.boardColor = new Color(150,75,0);
@@ -183,4 +219,29 @@ public class Config {
         this.numberOfTournaments = Integer.parseInt(Files.readAllLines(configPath).get(15));
     }
 
+    public static void initialSetting() throws IOException {
+        File dir = new File("logs");
+        if (!dir.exists() && !dir.mkdirs()) {
+            System.err.println("Cannot create log directory.");
+        }
+        FileWriter myWriter = new FileWriter(String.format("%s\\gameSettings.txt","logs"), false);
+        myWriter.write("gameDifficulty\n" +
+                "Easy\n" +
+                "boardColor\n" +
+                "black\n" +
+                "snakeColor\n" +
+                "red\n" +
+                "preyType\n" +
+                "apple\n" +
+                "bot01\n" +
+                "a_zhuchkov\n" +
+                "sky blue\n" +
+                "bot02\n" +
+                "a_zhuchkov\n" +
+                "white\n" +
+                "numberOfTournaments\n" +
+                "5");
+
+        myWriter.close();
+    }
 }
